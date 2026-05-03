@@ -68,7 +68,7 @@ export function EnquiryForm({
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className={`grid gap-4 ${compact ? "" : "rounded-none border border-charcoal/10 bg-white p-6 sm:p-8"}`}
+      className={`grid gap-4 ${compact ? "" : "rounded-none border border-cream/10 bg-charcoal-soft p-6 sm:p-8"}`}
       aria-labelledby="enquiry-heading"
     >
       <input
@@ -180,7 +180,7 @@ export function EnquiryForm({
         </p>
       )}
 
-      <p className="mt-2 text-xs text-charcoal-muted">
+      <p className="mt-2 text-xs text-cream/60">
         By submitting you agree to be contacted by Butterfly Built about your enquiry.
       </p>
     </form>

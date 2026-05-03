@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
@@ -11,12 +11,12 @@ html {
 }
 
 body {
-  @apply bg-cream text-charcoal antialiased;
+  @apply bg-charcoal text-cream antialiased;
   font-feature-settings: "ss01", "ss02";
 }
 
 ::selection {
-  background: theme(colors.timber.300);
+  background: theme(colors.timber.400);
   color: theme(colors.charcoal.DEFAULT);
 }
 
@@ -30,23 +30,23 @@ body {
   }
 
   .eyebrow {
-    @apply text-xs uppercase tracking-wider2 text-timber-700 font-medium;
+    @apply text-xs uppercase tracking-wider2 text-timber-300 font-medium;
   }
 
   .h-display {
-    @apply font-serif font-light leading-[1.05] tracking-tight text-charcoal;
+    @apply font-serif font-light leading-[1.05] tracking-tight text-cream;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-none border border-charcoal bg-charcoal px-6 py-3 text-sm font-medium uppercase tracking-wider2 text-cream transition hover:bg-charcoal-soft;
+    @apply inline-flex items-center justify-center rounded-none border border-cream bg-cream px-6 py-3 text-sm font-medium uppercase tracking-wider2 text-charcoal transition hover:bg-timber-200 hover:border-timber-200;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-none border border-charcoal/80 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-wider2 text-charcoal transition hover:bg-charcoal hover:text-cream;
+    @apply inline-flex items-center justify-center rounded-none border border-cream/40 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-wider2 text-cream transition hover:bg-cream hover:text-charcoal;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 text-sm uppercase tracking-wider2 text-charcoal hover:text-timber-700 transition;
+    @apply inline-flex items-center gap-2 text-sm uppercase tracking-wider2 text-cream/80 hover:text-timber-300 transition;
   }
 
   .link-underline {
@@ -54,6 +54,34 @@ body {
   }
 
   .input-base {
-    @apply w-full border border-charcoal/20 bg-white/80 px-4 py-3 text-sm text-charcoal placeholder:text-charcoal-muted focus:outline-none focus:border-charcoal;
+    @apply w-full border border-cream/15 bg-charcoal-soft px-4 py-3 text-sm text-cream placeholder:text-cream/40 focus:outline-none focus:border-cream/60;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+  .animate-marquee-left {
+    animation: marquee-left var(--marquee-speed, 80s) linear infinite;
+    will-change: transform;
+  }
+  .animate-marquee-right {
+    animation: marquee-right var(--marquee-speed, 80s) linear infinite;
+    will-change: transform;
+  }
+  .marquee-speed-alt {
+    animation-duration: var(--marquee-speed-alt, 92s);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-left,
+    .animate-marquee-right {
+      animation: none;
+    }
   }
 }

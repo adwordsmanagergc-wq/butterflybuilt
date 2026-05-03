@@ -9,7 +9,7 @@ export function FAQ({
 }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <ul className="divide-y divide-charcoal/10 border-y border-charcoal/10">
+    <ul className="divide-y divide-cream/10 border-y border-cream/10">
       {faqs.map((f, i) => {
         const isOpen = open === i;
         return (
@@ -21,15 +21,15 @@ export function FAQ({
               aria-controls={`faq-${i}`}
               className="flex w-full items-start justify-between gap-6 py-5 text-left"
             >
-              <span className="font-serif text-lg text-charcoal sm:text-xl">{f.question}</span>
-              <span aria-hidden className="mt-1 text-2xl text-timber-600">
+              <span className="font-serif text-lg text-cream sm:text-xl">{f.question}</span>
+              <span aria-hidden className="mt-1 text-2xl text-timber-300">
                 {isOpen ? "–" : "+"}
               </span>
             </button>
             <div
               id={`faq-${i}`}
               hidden={!isOpen}
-              className="pb-6 pr-10 text-charcoal-soft leading-relaxed"
+              className="pb-6 pr-10 text-cream/80 leading-relaxed"
             >
               {f.answer}
             </div>

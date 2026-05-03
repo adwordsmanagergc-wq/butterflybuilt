@@ -28,12 +28,12 @@ export default function ProjectsPage() {
         <Heading level={1} className="mt-4">
           Recent carpentry work in Sydney.
         </Heading>
-        <p className="mt-6 max-w-prose2 text-lg leading-relaxed text-charcoal-soft">
+        <p className="mt-6 max-w-prose2 text-lg leading-relaxed text-cream/80">
           A selection of custom joinery, decks, kitchens and renovation carpentry projects
           we've completed across the Eastern Suburbs and greater Sydney. Follow{" "}
           <a
             href="https://www.instagram.com/butterfly.built"
-            className="link-underline text-charcoal"
+            className="link-underline text-cream"
             target="_blank"
             rel="noreferrer"
           >
@@ -49,7 +49,7 @@ export default function ProjectsPage() {
         <ProjectsGrid />
       </Section>
 
-      <Section className="bg-timber-50/60">
+      <Section className="bg-charcoal-soft">
         <Eyebrow>Have a project in mind?</Eyebrow>
         <Heading level={2} className="mt-3">
           Let's build it.

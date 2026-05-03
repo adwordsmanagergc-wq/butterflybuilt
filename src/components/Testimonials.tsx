@@ -28,18 +28,18 @@ export const testimonials = [
 
 export function Testimonials() {
   return (
-    <div className="grid gap-px bg-charcoal/10 md:grid-cols-3">
+    <div className="grid gap-px bg-cream/10 md:grid-cols-3">
       {testimonials.map((t) => (
-        <figure key={t.author} className="flex flex-col bg-cream p-8">
-          <div aria-label={`${t.rating} out of 5 stars`} className="text-timber-600">
+        <figure key={t.author} className="flex flex-col bg-cream/5 p-8">
+          <div aria-label={`${t.rating} out of 5 stars`} className="text-timber-300">
             {"★".repeat(t.rating)}
-            <span className="text-charcoal/20">{"★".repeat(5 - t.rating)}</span>
+            <span className="text-cream/20">{"★".repeat(5 - t.rating)}</span>
           </div>
-          <blockquote className="mt-4 font-serif text-lg leading-relaxed text-charcoal">
+          <blockquote className="mt-4 font-serif text-lg leading-relaxed text-cream">
             “{t.body}”
           </blockquote>
-          <figcaption className="mt-6 text-sm text-charcoal-muted">
-            <span className="font-medium text-charcoal">{t.author}</span> — {t.suburb}
+          <figcaption className="mt-6 text-sm text-cream/60">
+            <span className="font-medium text-cream">{t.author}</span> — {t.suburb}
           </figcaption>
         </figure>
       ))}

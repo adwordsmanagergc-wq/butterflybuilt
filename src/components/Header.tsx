@@ -26,7 +26,7 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-40 transition-colors ${
-        scrolled ? "bg-cream/95 backdrop-blur shadow-[0_1px_0_rgba(0,0,0,0.06)]" : "bg-cream/80"
+        scrolled ? "bg-charcoal/95 backdrop-blur shadow-[0_1px_0_rgba(0,0,0,0.06)]" : "bg-charcoal/80"
       }`}
     >
       <div className="container-prose flex items-center justify-between gap-4 py-4">
@@ -43,7 +43,7 @@ export function Header() {
             <Link
               key={n.href}
               href={n.href}
-              className="text-sm uppercase tracking-wider2 text-charcoal hover:text-timber-700 transition"
+              className="text-sm uppercase tracking-wider2 text-cream hover:text-timber-300 transition"
             >
               {n.label}
             </Link>
@@ -53,7 +53,7 @@ export function Header() {
         <div className="hidden items-center gap-3 md:flex">
           <a
             href={`tel:${siteConfig.phoneTel}`}
-            className="text-sm tracking-wider2 text-charcoal hover:text-timber-700"
+            className="text-sm tracking-wider2 text-cream hover:text-timber-300"
           >
             {siteConfig.phone}
           </a>
@@ -69,21 +69,21 @@ export function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          <span className="block h-px w-6 bg-charcoal mb-1.5" />
-          <span className="block h-px w-6 bg-charcoal mb-1.5" />
-          <span className="block h-px w-6 bg-charcoal" />
+          <span className="block h-px w-6 bg-cream mb-1.5" />
+          <span className="block h-px w-6 bg-cream mb-1.5" />
+          <span className="block h-px w-6 bg-cream" />
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-charcoal/10 bg-cream md:hidden">
+        <div className="border-t border-cream/10 bg-cream/5 md:hidden">
           <nav aria-label="Mobile" className="container-prose flex flex-col gap-4 py-6">
             {nav.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="text-base tracking-wider2 text-charcoal"
+                className="text-base tracking-wider2 text-cream"
               >
                 {n.label}
               </Link>

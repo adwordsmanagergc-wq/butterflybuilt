@@ -57,20 +57,20 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <JsonLd data={faqJsonLd(service.faqs)} />
 
       <Section className="pt-12">
-        <nav aria-label="Breadcrumb" className="mb-8 text-xs uppercase tracking-wider2 text-charcoal-muted">
-          <Link href="/" className="hover:text-charcoal">Home</Link>
+        <nav aria-label="Breadcrumb" className="mb-8 text-xs uppercase tracking-wider2 text-cream/60">
+          <Link href="/" className="hover:text-timber-300">Home</Link>
           <span aria-hidden> / </span>
-          <Link href="/services" className="hover:text-charcoal">Services</Link>
+          <Link href="/services" className="hover:text-timber-300">Services</Link>
           <span aria-hidden> / </span>
-          <span className="text-charcoal">{service.shortName}</span>
+          <span className="text-cream">{service.shortName}</span>
         </nav>
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-7">
             <Eyebrow>{service.shortName}</Eyebrow>
             <Heading level={1} className="mt-4">
-              {service.name} <span className="text-timber-600">in Sydney</span>
+              {service.name} <span className="text-timber-300">in Sydney</span>
             </Heading>
-            <p className="mt-6 text-lg leading-relaxed text-charcoal-soft">{service.tagline}</p>
+            <p className="mt-6 text-lg leading-relaxed text-cream/80">{service.tagline}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="#enquire" className="btn-primary">
                 Get a Free Quote
@@ -81,7 +81,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             </div>
           </div>
           <div className="md:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden bg-timber-100">
+            <div className="relative aspect-[4/5] overflow-hidden bg-charcoal-soft">
               {/* TODO: Replace with Instagram image */}
               <Img src={service.heroImage} alt={service.heroAlt} className="h-full w-full object-cover" />
             </div>
@@ -98,15 +98,15 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             <Heading level={2} className="mt-3">
               {service.shortName} done right.
             </Heading>
-            <p className="mt-6 text-lg leading-relaxed text-charcoal-soft">{service.intro}</p>
+            <p className="mt-6 text-lg leading-relaxed text-cream/80">{service.intro}</p>
           </div>
           <aside className="md:col-span-5">
-            <div className="border border-charcoal/10 bg-cream p-6 sm:p-8">
+            <div className="border border-cream/10 bg-cream/5 p-6 sm:p-8">
               <h3 className="font-serif text-xl">Why Butterfly Built for {service.shortName.toLowerCase()}</h3>
-              <ul className="mt-4 space-y-3 text-sm text-charcoal-soft">
+              <ul className="mt-4 space-y-3 text-sm text-cream/80">
                 {service.benefits.map((b) => (
                   <li key={b} className="flex gap-3">
-                    <span aria-hidden className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-timber-600" />
+                    <span aria-hidden className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-timber-300" />
                     {b}
                   </li>
                 ))}
@@ -116,7 +116,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         </div>
       </Section>
 
-      <Section className="bg-timber-50/60">
+      <Section className="bg-charcoal-soft">
         <Eyebrow>Process</Eyebrow>
         <Heading level={2} className="mt-3 mb-10">
           How we deliver your project.
@@ -134,12 +134,12 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <FAQ faqs={service.faqs} />
       </Section>
 
-      <Section className="bg-timber-50/60">
+      <Section className="bg-charcoal-soft">
         <Eyebrow>Where we work</Eyebrow>
         <Heading level={2} className="mt-3">
           {service.shortName} across Sydney.
         </Heading>
-        <p className="mt-4 max-w-prose2 text-charcoal-soft">
+        <p className="mt-4 max-w-prose2 text-cream/80">
           We deliver {service.shortName.toLowerCase()} for clients across the Eastern Suburbs and
           greater Sydney, from our Dover Heights workshop.
         </p>
@@ -155,7 +155,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             <Heading level={2} className="mt-3">
               Get a quote for your {service.shortName.toLowerCase()} project.
             </Heading>
-            <p className="mt-4 text-charcoal-soft">
+            <p className="mt-4 text-cream/80">
               Fill in the form and we'll be in touch within one business day.
             </p>
           </div>
@@ -165,15 +165,15 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         </div>
       </Section>
 
-      <Section className="border-t border-charcoal/10">
+      <Section className="border-t border-cream/10">
         <Eyebrow>Other services</Eyebrow>
         <Heading level={2} className="mt-3 mb-10">
           Explore more of our work.
         </Heading>
-        <div className="grid gap-px bg-charcoal/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px bg-cream/10 sm:grid-cols-2 lg:grid-cols-3">
           {otherServices.map((s) => (
-            <Link key={s.slug} href={`/services/${s.slug}`} className="bg-cream p-6 hover:bg-timber-50">
-              <div className="eyebrow text-timber-700">{s.shortName}</div>
+            <Link key={s.slug} href={`/services/${s.slug}`} className="bg-cream/5 p-6 hover:bg-cream/10">
+              <div className="eyebrow text-timber-300">{s.shortName}</div>
               <div className="mt-2 font-serif text-xl">{s.name}</div>
             </Link>
           ))}

@@ -28,7 +28,7 @@ export default function ContactPage() {
         <Heading level={1} className="mt-4">
           Get a quote for your Sydney carpentry project.
         </Heading>
-        <p className="mt-6 max-w-prose2 text-lg leading-relaxed text-charcoal-soft">
+        <p className="mt-6 max-w-prose2 text-lg leading-relaxed text-cream/80">
           Tell us about your project and we'll get back to you within one business day. For
           urgent enquiries, call us directly.
         </p>
@@ -42,22 +42,22 @@ export default function ContactPage() {
             <h2 className="font-serif text-2xl">By phone</h2>
             <a
               href={`tel:${siteConfig.phoneTel}`}
-              className="mt-2 block font-serif text-3xl text-timber-700"
+              className="mt-2 block font-serif text-3xl text-timber-300"
             >
               {siteConfig.phone}
             </a>
-            <p className="mt-1 text-sm text-charcoal-muted">{siteConfig.hours}</p>
+            <p className="mt-1 text-sm text-cream/60">{siteConfig.hours}</p>
 
             <h2 className="mt-10 font-serif text-2xl">By email</h2>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="mt-2 block font-serif text-xl text-timber-700"
+              className="mt-2 block font-serif text-xl text-timber-300"
             >
               {siteConfig.email}
             </a>
 
             <h2 className="mt-10 font-serif text-2xl">Workshop</h2>
-            <address className="mt-2 not-italic text-charcoal-soft">
+            <address className="mt-2 not-italic text-cream/80">
               Dover Heights
               <br />
               Sydney NSW 2030

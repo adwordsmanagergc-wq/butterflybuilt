@@ -29,7 +29,7 @@ export default function ServicesIndexPage() {
         <Heading level={1} className="mt-4">
           Carpentry services in Sydney.
         </Heading>
-        <p className="mt-6 max-w-prose2 text-lg text-charcoal-soft">
+        <p className="mt-6 max-w-prose2 text-lg text-cream/80">
           Butterfly Built is a full-service carpentry company based in Dover Heights, Sydney.
           From bespoke joinery to whole-home renovations, every project is hand-crafted in our
           workshop and finished by master carpenters on site. Explore our services below.
@@ -42,14 +42,14 @@ export default function ServicesIndexPage() {
         <ServicesGrid />
       </Section>
 
-      <Section className="bg-timber-50/60">
+      <Section className="bg-charcoal-soft">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Eyebrow>Get a quote</Eyebrow>
             <Heading level={2} className="mt-3">
               Tell us what you'd like to build.
             </Heading>
-            <p className="mt-4 text-charcoal-soft">
+            <p className="mt-4 text-cream/80">
               Not sure what service you need? Just tell us about your project and we'll point
               you in the right direction.
             </p>

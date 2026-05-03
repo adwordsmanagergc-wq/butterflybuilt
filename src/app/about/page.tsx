@@ -31,7 +31,7 @@ export default function AboutPage() {
         <Heading level={1} className="mt-4">
           A workshop in Dover Heights, building across Sydney.
         </Heading>
-        <p className="mt-6 max-w-prose2 text-lg leading-relaxed text-charcoal-soft">
+        <p className="mt-6 max-w-prose2 text-lg leading-relaxed text-cream/80">
           Butterfly Built was founded by Jon, a master carpenter who grew up working timber
           and never stopped. We're a small, hands-on team based in a workshop in Dover
           Heights — close enough to most jobs that we can be on site quickly, and far enough
@@ -44,7 +44,7 @@ export default function AboutPage() {
       <Section>
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
-            <div className="aspect-[4/5] w-full overflow-hidden bg-timber-100">
+            <div className="aspect-[4/5] w-full overflow-hidden bg-charcoal-soft">
               {/* TODO: Replace with Instagram image — Jon in workshop */}
               <Img
                 src="/images/about/jon-portrait.jpg"
@@ -58,7 +58,7 @@ export default function AboutPage() {
             <Heading level={2} className="mt-3">
               Carpentry that respects the material.
             </Heading>
-            <div className="mt-6 space-y-5 text-charcoal-soft leading-relaxed">
+            <div className="mt-6 space-y-5 text-cream/80 leading-relaxed">
               <p>
                 {/* TODO: Replace with real founder story */}
                 Butterfly Built started with a simple idea — that good carpentry should look
@@ -89,7 +89,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section className="bg-timber-50/60">
+      <Section className="bg-charcoal-soft">
         <Eyebrow>Quick facts</Eyebrow>
         <Heading level={2} className="mt-3 mb-10">
           Butterfly Built at a glance.
@@ -121,7 +121,7 @@ export default function AboutPage() {
         <ProcessSection />
       </Section>
 
-      <Section className="bg-timber-50/60">
+      <Section className="bg-charcoal-soft">
         <Eyebrow>What clients say</Eyebrow>
         <Heading level={2} className="mt-3 mb-10">
           Reviews from Sydney homeowners.

@@ -8,7 +8,7 @@ export default function NotFound() {
       <Heading level={1} className="mt-3">
         Page not found.
       </Heading>
-      <p className="mt-4 max-w-prose2 text-charcoal-soft">
+      <p className="mt-4 max-w-prose2 text-cream/80">
         The page you're looking for doesn't exist. Try the homepage or get in touch.
       </p>
       <div className="mt-6 flex flex-wrap gap-3">

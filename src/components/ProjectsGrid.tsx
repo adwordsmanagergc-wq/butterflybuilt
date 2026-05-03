@@ -58,7 +58,7 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
           className="group block"
           aria-label={`${p.title} — view projects`}
         >
-          <div className="relative aspect-[4/5] overflow-hidden bg-timber-100">
+          <div className="relative aspect-[4/5] overflow-hidden bg-charcoal-soft">
             {/* TODO: Replace with Instagram image */}
             <Img
               src={p.image}
@@ -68,8 +68,8 @@ export function ProjectsGrid({ limit }: { limit?: number }) {
             />
           </div>
           <div className="mt-4 flex items-baseline justify-between">
-            <h3 className="font-serif text-xl text-charcoal">{p.title}</h3>
-            <span className="text-xs uppercase tracking-wider2 text-charcoal-muted">
+            <h3 className="font-serif text-xl text-cream">{p.title}</h3>
+            <span className="text-xs uppercase tracking-wider2 text-cream/60">
               {p.suburb}
             </span>
           </div>

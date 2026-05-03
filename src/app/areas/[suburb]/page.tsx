@@ -86,20 +86,20 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
       <JsonLd data={reviewJsonLd(testimonials)} />
 
       <Section className="pt-12">
-        <nav aria-label="Breadcrumb" className="mb-8 text-xs uppercase tracking-wider2 text-charcoal-muted">
-          <Link href="/" className="hover:text-charcoal">Home</Link>
+        <nav aria-label="Breadcrumb" className="mb-8 text-xs uppercase tracking-wider2 text-cream/60">
+          <Link href="/" className="hover:text-timber-300">Home</Link>
           <span aria-hidden> / </span>
-          <Link href="/areas/bondi" className="hover:text-charcoal">Areas</Link>
+          <Link href="/areas/bondi" className="hover:text-timber-300">Areas</Link>
           <span aria-hidden> / </span>
-          <span className="text-charcoal">{sub.name}</span>
+          <span className="text-cream">{sub.name}</span>
         </nav>
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-7">
             <Eyebrow>Carpenter · {sub.name} · {sub.postcode}</Eyebrow>
             <Heading level={1} className="mt-4">
-              Carpenter <span className="text-timber-600">{sub.name}</span> | Butterfly Built
+              Carpenter <span className="text-timber-300">{sub.name}</span> | Butterfly Built
             </Heading>
-            <p className="mt-6 text-lg leading-relaxed text-charcoal-soft">{sub.intro}</p>
+            <p className="mt-6 text-lg leading-relaxed text-cream/80">{sub.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="#enquire" className="btn-primary">
                 Get a Free Quote
@@ -110,7 +110,7 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
             </div>
           </div>
           <div className="md:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden bg-timber-100">
+            <div className="relative aspect-[4/5] overflow-hidden bg-charcoal-soft">
               {/* TODO: Replace with Instagram image */}
               <Img src={sub.heroImage} alt={sub.heroAlt} className="h-full w-full object-cover" />
             </div>
@@ -127,29 +127,29 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
             <Heading level={2} className="mt-3">
               Carpentry that suits the suburb.
             </Heading>
-            <p className="mt-6 text-lg leading-relaxed text-charcoal-soft">{sub.housingStyles}</p>
+            <p className="mt-6 text-lg leading-relaxed text-cream/80">{sub.housingStyles}</p>
             <h3 className="mt-8 font-serif text-xl">Common projects in {sub.name}</h3>
-            <ul className="mt-4 space-y-2 text-charcoal-soft">
+            <ul className="mt-4 space-y-2 text-cream/80">
               {sub.commonProjects.map((p) => (
                 <li key={p} className="flex gap-3">
-                  <span aria-hidden className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-timber-600" />
+                  <span aria-hidden className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-timber-300" />
                   {p}
                 </li>
               ))}
             </ul>
           </div>
           <aside className="md:col-span-5">
-            <div className="border border-charcoal/10 bg-cream p-6 sm:p-8">
+            <div className="border border-cream/10 bg-cream/5 p-6 sm:p-8">
               <h3 className="font-serif text-xl">Local landmarks</h3>
-              <ul className="mt-4 space-y-2 text-sm text-charcoal-soft">
+              <ul className="mt-4 space-y-2 text-sm text-cream/80">
                 {sub.landmarks.map((l) => (
                   <li key={l}>• {l}</li>
                 ))}
               </ul>
               <h3 className="mt-8 font-serif text-xl">Postcode</h3>
-              <p className="mt-2 text-charcoal-soft">{sub.postcode}</p>
+              <p className="mt-2 text-cream/80">{sub.postcode}</p>
               <h3 className="mt-8 font-serif text-xl">From our workshop</h3>
-              <p className="mt-2 text-charcoal-soft">
+              <p className="mt-2 text-cream/80">
                 Butterfly Built is based in Dover Heights — minutes from {sub.name}.
               </p>
             </div>
@@ -158,15 +158,15 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
       </Section>
 
       {/* Case studies (placeholders) */}
-      <Section className="bg-timber-50/60">
+      <Section className="bg-charcoal-soft">
         <Eyebrow>Recent {sub.name} work</Eyebrow>
         <Heading level={2} className="mt-3 mb-10">
           A glimpse at projects nearby.
         </Heading>
         <div className="grid gap-6 sm:grid-cols-2">
           {[1, 2].map((n) => (
-            <article key={n} className="bg-cream">
-              <div className="relative aspect-[4/3] overflow-hidden bg-timber-100">
+            <article key={n} className="bg-cream/5">
+              <div className="relative aspect-[4/3] overflow-hidden bg-charcoal-soft">
                 {/* TODO: Replace with Instagram image */}
                 <Img
                   src={`/images/areas/${sub.slug}-case-${n}.jpg`}
@@ -175,12 +175,12 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
                 />
               </div>
               <div className="p-6">
-                <p className="eyebrow text-timber-700">Case study · {sub.name}</p>
+                <p className="eyebrow text-timber-300">Case study · {sub.name}</p>
                 <h3 className="mt-2 font-serif text-2xl">
                   {/* TODO: Replace with real project name */}
                   {n === 1 ? `${sub.name} Renovation` : `${sub.name} Custom Joinery`}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-charcoal-muted">
+                <p className="mt-3 text-sm leading-relaxed text-cream/60">
                   {/* TODO: Replace with real case study copy */}
                   A recent {sub.name} project where we delivered a hand-crafted carpentry package
                   tailored to the home's architecture and the suburb's coastal conditions.
@@ -199,7 +199,7 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
         <ServicesGrid limit={featuredServices.length} />
       </Section>
 
-      <Section className="bg-timber-50/60">
+      <Section className="bg-charcoal-soft">
         <Eyebrow>Process</Eyebrow>
         <Heading level={2} className="mt-3 mb-10">
           How we work in {sub.name}.
@@ -216,21 +216,21 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
       </Section>
 
       {neighbourSubs.length > 0 && (
-        <Section className="bg-timber-50/60">
+        <Section className="bg-charcoal-soft">
           <Eyebrow>Nearby suburbs</Eyebrow>
           <Heading level={2} className="mt-3 mb-10">
             We also work in…
           </Heading>
-          <div className="grid grid-cols-2 gap-px bg-charcoal/10 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-px bg-cream/10 sm:grid-cols-3 lg:grid-cols-4">
             {neighbourSubs.map((n) =>
               n ? (
                 <Link
                   key={n.slug}
                   href={`/areas/${n.slug}`}
-                  className="bg-cream px-6 py-5 hover:bg-timber-50"
+                  className="bg-cream/5 px-6 py-5 hover:bg-cream/10"
                 >
                   <div className="font-serif text-xl">{n.name}</div>
-                  <div className="text-xs uppercase tracking-wider2 text-charcoal-muted">
+                  <div className="text-xs uppercase tracking-wider2 text-cream/60">
                     {n.postcode}
                   </div>
                 </Link>
@@ -247,7 +247,7 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
             <Heading level={2} className="mt-3">
               Carpenter in {sub.name}? Let's talk.
             </Heading>
-            <p className="mt-4 text-charcoal-soft">
+            <p className="mt-4 text-cream/80">
               Tell us about your project. We'll respond within one business day.
             </p>
           </div>

@@ -5,7 +5,7 @@ import { ServicesGrid } from "@/components/ServicesGrid";
 import { AreasGrid } from "@/components/AreasGrid";
 import { ProcessSection } from "@/components/ProcessSection";
 import { Testimonials, testimonials } from "@/components/Testimonials";
-import { ProjectsGrid } from "@/components/ProjectsGrid";
+import { PhotoMarquee } from "@/components/PhotoMarquee";
 import { FAQ } from "@/components/FAQ";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Section, Eyebrow, Heading } from "@/components/Section";
@@ -34,7 +34,7 @@ export default function HomePage() {
         heading={
           <>
             Master Carpenters in Sydney —
-            <br /> Bespoke Craftsmanship by <em className="not-italic text-timber-600">Butterfly Built</em>.
+            <br /> Bespoke Craftsmanship by <em className="not-italic text-timber-300">Butterfly Built</em>.
           </>
         }
         sub={
@@ -62,7 +62,7 @@ export default function HomePage() {
             </Heading>
           </div>
           <div className="md:col-span-7">
-            <p className="text-lg leading-relaxed text-charcoal-soft">
+            <p className="text-lg leading-relaxed text-cream/80">
               Butterfly Built is a carpentry company based in Dover Heights, Sydney. Founded by
               master carpenter Jon, we deliver bespoke joinery, custom kitchens, hardwood
               decking, built-in wardrobes and renovation carpentry to homes across the Eastern
@@ -95,7 +95,7 @@ export default function HomePage() {
       </Section>
 
       {/* Services grid */}
-      <Section className="bg-timber-50/60" id="services">
+      <Section className="bg-charcoal-soft" id="services">
         <div className="flex items-end justify-between gap-6">
           <div>
             <Eyebrow>What we build</Eyebrow>
@@ -117,31 +117,33 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Projects */}
-      <Section id="projects">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <Eyebrow>Recent work</Eyebrow>
-            <Heading level={2} className="mt-3">
-              Selected Sydney projects.
-            </Heading>
+      {/* Recent work — flowing photo gallery */}
+      <section id="projects" className="py-16 sm:py-24">
+        <div className="container-prose">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <Eyebrow>Recent work</Eyebrow>
+              <Heading level={2} className="mt-3">
+                Selected Sydney projects.
+              </Heading>
+            </div>
+            <Link href="/projects" className="btn-ghost hidden sm:inline-flex">
+              View all →
+            </Link>
           </div>
-          <Link href="/projects" className="btn-ghost hidden sm:inline-flex">
-            View all →
-          </Link>
         </div>
-        <div className="mt-10">
-          <ProjectsGrid limit={6} />
+        <div className="mt-10 sm:mt-14">
+          <PhotoMarquee speed={90} />
         </div>
-      </Section>
+      </section>
 
       {/* Areas */}
-      <Section className="bg-timber-50/60" id="areas">
+      <Section className="bg-charcoal-soft" id="areas">
         <Eyebrow>Areas we serve</Eyebrow>
         <Heading level={2} className="mt-3">
           Local carpenters across the Eastern Suburbs.
         </Heading>
-        <p className="mt-4 max-w-prose2 text-charcoal-soft">
+        <p className="mt-4 max-w-prose2 text-cream/80">
           Based in Dover Heights, we work daily across Bondi, Bondi Beach, Bondi Junction,
           Tamarama, Bronte, Vaucluse, Rose Bay, Double Bay and Watsons Bay — and across the
           rest of Sydney on bigger projects.
@@ -171,7 +173,7 @@ export default function HomePage() {
             ].map(([title, body]) => (
               <li key={title}>
                 <h3 className="font-serif text-xl">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-charcoal-muted">{body}</p>
+                <p className="mt-2 text-sm leading-relaxed text-cream/60">{body}</p>
               </li>
             ))}
           </ul>
@@ -179,7 +181,7 @@ export default function HomePage() {
       </Section>
 
       {/* Process */}
-      <Section className="bg-timber-50/60" id="process">
+      <Section className="bg-charcoal-soft" id="process">
         <Eyebrow>How we work</Eyebrow>
         <Heading level={2} className="mt-3 mb-10">
           From first call to final handover.
@@ -197,7 +199,7 @@ export default function HomePage() {
       </Section>
 
       {/* Quick facts — LLM-friendly */}
-      <Section className="bg-charcoal text-cream" id="quick-facts">
+      <Section className="bg-black text-cream" id="quick-facts">
         <Eyebrow>
           <span className="text-cream/70">Quick Facts</span>
         </Eyebrow>
@@ -233,14 +235,14 @@ export default function HomePage() {
       </Section>
 
       {/* Enquiry */}
-      <Section className="bg-timber-50/60" id="enquire">
+      <Section className="bg-charcoal-soft" id="enquire">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Eyebrow>Get a quote</Eyebrow>
             <Heading level={2} id="enquiry-heading" className="mt-3">
               Tell us about your project.
             </Heading>
-            <p className="mt-4 text-charcoal-soft">
+            <p className="mt-4 text-cream/80">
               We'll get back to you within one business day with next steps. For urgent jobs,
               call <a className="link-underline" href={`tel:${siteConfig.phoneTel}`}>{siteConfig.phone}</a>.
             </p>

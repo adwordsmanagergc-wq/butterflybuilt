@@ -12,12 +12,12 @@ export function ProcessSection({
   steps?: { name: string; desc: string }[];
 }) {
   return (
-    <ol className="grid gap-px bg-charcoal/10 md:grid-cols-5">
+    <ol className="grid gap-px bg-cream/10 md:grid-cols-5">
       {steps.map((s, i) => (
-        <li key={s.name} className="flex flex-col bg-cream p-6">
-          <span className="font-serif text-3xl text-timber-600">0{i + 1}</span>
+        <li key={s.name} className="flex flex-col bg-cream/5 p-6">
+          <span className="font-serif text-3xl text-timber-300">0{i + 1}</span>
           <h3 className="mt-3 font-serif text-xl">{s.name}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-charcoal-muted">{s.desc}</p>
+          <p className="mt-2 text-sm leading-relaxed text-cream/60">{s.desc}</p>
         </li>
       ))}
     </ol>

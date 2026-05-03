@@ -8,7 +8,7 @@ export function Footer() {
   const featuredSuburbs = suburbs.filter((s) => PRIMARY_SUBURB_SLUGS.includes(s.slug));
 
   return (
-    <footer className="mt-24 border-t border-charcoal/10 bg-charcoal text-cream">
+    <footer className="mt-24 border-t border-cream/10 bg-black text-cream">
       <div className="container-prose py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div>
@@ -24,14 +24,14 @@ export function Footer() {
               workshop in Dover Heights.
             </p>
             <div className="mt-6 space-y-2 text-sm text-cream/80">
-              <a className="block hover:text-cream" href={`tel:${siteConfig.phoneTel}`}>
+              <a className="block hover:text-timber-300" href={`tel:${siteConfig.phoneTel}`}>
                 {siteConfig.phone}
               </a>
-              <a className="block hover:text-cream" href={`mailto:${siteConfig.email}`}>
+              <a className="block hover:text-timber-300" href={`mailto:${siteConfig.email}`}>
                 {siteConfig.email}
               </a>
               <a
-                className="block hover:text-cream"
+                className="block hover:text-timber-300"
                 href={siteConfig.instagram}
                 target="_blank"
                 rel="noreferrer"
@@ -46,7 +46,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm">
               {featured.map((s) => (
                 <li key={s.slug}>
-                  <Link className="text-cream/80 hover:text-cream" href={`/services/${s.slug}`}>
+                  <Link className="text-cream/80 hover:text-timber-300" href={`/services/${s.slug}`}>
                     {s.shortName}
                   </Link>
                 </li>
@@ -64,7 +64,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm">
               {featuredSuburbs.map((s) => (
                 <li key={s.slug}>
-                  <Link className="text-cream/80 hover:text-cream" href={`/areas/${s.slug}`}>
+                  <Link className="text-cream/80 hover:text-timber-300" href={`/areas/${s.slug}`}>
                     {s.name}
                   </Link>
                 </li>
