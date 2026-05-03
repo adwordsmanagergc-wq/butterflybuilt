@@ -60,20 +60,41 @@ body {
 
 @layer utilities {
   @keyframes marquee-left {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
   }
   @keyframes marquee-right {
-    from { transform: translateX(-50%); }
-    to   { transform: translateX(0); }
+    from { transform: translate3d(-50%, 0, 0); }
+    to   { transform: translate3d(0, 0, 0); }
+  }
+
+  /* Items in the marquee row get an explicit pixel height + width derived
+     from the per-image --aspect ratio. Reserving width up-front means the
+     row's total pixel width is known at first paint — no layout shift,
+     no animation jitter as images stream in. */
+  .marquee-item {
+    height: var(--row-h, 200px);
+    width: calc(var(--row-h, 200px) * var(--aspect, 1));
+  }
+  @media (min-width: 640px) {
+    .marquee-item {
+      height: var(--row-h-md, 280px);
+      width: calc(var(--row-h-md, 280px) * var(--aspect, 1));
+    }
+  }
+
+  .marquee-row {
+    /* Promote to its own composite layer so the transform animates on the
+       GPU and doesn't repaint the rest of the page each frame. */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout paint;
   }
   .animate-marquee-left {
     animation: marquee-left var(--marquee-speed, 80s) linear infinite;
-    will-change: transform;
   }
   .animate-marquee-right {
     animation: marquee-right var(--marquee-speed, 80s) linear infinite;
-    will-change: transform;
   }
   .marquee-speed-alt {
     animation-duration: var(--marquee-speed-alt, 92s);

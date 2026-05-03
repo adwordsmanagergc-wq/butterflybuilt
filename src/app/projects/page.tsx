@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Section, Eyebrow, Heading } from "@/components/Section";
-import { ProjectsGrid } from "@/components/ProjectsGrid";
+import { GalleryGrid } from "@/components/GalleryGrid";
 import { TrustStrip } from "@/components/TrustStrip";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
@@ -46,7 +46,7 @@ export default function ProjectsPage() {
       <TrustStrip />
 
       <Section>
-        <ProjectsGrid />
+        <GalleryGrid />
       </Section>
 
       <Section className="bg-charcoal-soft">
