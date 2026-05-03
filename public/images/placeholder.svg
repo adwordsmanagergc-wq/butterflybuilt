@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <pattern id="grain" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.4" fill="#bf9266" opacity="0.25"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="1000" fill="#f1e9dd"/>
+  <rect width="800" height="1000" fill="url(#grain)"/>
+  <g fill="none" stroke="#8a5e3d" stroke-width="2" opacity="0.6">
+    <path d="M400 380v340"/>
+    <path d="M400 440c-70-110-240-90-240 40 0 110 130 175 240 155"/>
+    <path d="M400 440c70-110 240-90 240 40 0 110-130 175-240 155"/>
+  </g>
+  <text x="400" y="850" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#6c4830">Butterfly Built</text>
+  <text x="400" y="890" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" letter-spacing="4" fill="#8a5e3d">IMAGE PLACEHOLDER</text>
+</svg>

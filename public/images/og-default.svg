@@ -1,0 +1,11 @@
+<!-- TODO: Replace with 1200x630 JPG/PNG OG image showing Butterfly Built carpentry -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f8f4ee"/>
+  <g fill="none" stroke="#1f1d1a" stroke-width="3">
+    <path d="M600 200v260"/>
+    <path d="M600 250c-60-100-220-80-220 40 0 100 120 160 220 140"/>
+    <path d="M600 250c60-100 220-80 220 40 0 100-120 160-220 140"/>
+  </g>
+  <text x="600" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="56" fill="#1f1d1a">Butterfly Built</text>
+  <text x="600" y="585" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" letter-spacing="6" fill="#6c4830">MASTER CARPENTERS · SYDNEY</text>
+</svg>
