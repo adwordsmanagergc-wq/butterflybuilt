@@ -34,7 +34,7 @@ export function Header() {
           <img
             src="/images/butterfly-built-logo.png"
             alt="Butterfly Built"
-            className="h-10 w-auto invert sm:h-12"
+            className="h-10 w-auto sm:h-12"
           />
         </Link>
 
