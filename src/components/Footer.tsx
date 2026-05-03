@@ -90,6 +90,23 @@ export function Footer() {
               <br />
               Hours: {siteConfig.hours}
             </p>
+            <ul className="mt-6 space-y-2 text-sm">
+              <li>
+                <Link className="text-cream/80 hover:text-timber-300" href="/blog">
+                  Journal
+                </Link>
+              </li>
+              <li>
+                <Link className="text-cream/80 hover:text-timber-300" href="/projects">
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link className="text-cream/80 hover:text-timber-300" href="/about">
+                  About
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 

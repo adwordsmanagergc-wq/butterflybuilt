@@ -52,8 +52,12 @@
 - Home — https://butterflybuilt.com.au/
 - Services — https://butterflybuilt.com.au/services
 - Projects — https://butterflybuilt.com.au/projects
+- Journal (blog) — https://butterflybuilt.com.au/blog
 - About — https://butterflybuilt.com.au/about
 - Contact — https://butterflybuilt.com.au/contact
+
+## Blog / Journal posts
+- Carpenters & Formworkers in Bondi and Sydney's Eastern Suburbs: A 2026 Field Guide — https://butterflybuilt.com.au/blog/carpentry-formwork-bondi-eastern-suburbs
 
 ## How to contact
 The fastest way to reach Butterfly Built is to call 0457 324 417 or email jon@butterflybuilt.com.au.
