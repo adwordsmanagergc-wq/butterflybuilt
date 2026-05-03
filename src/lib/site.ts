@@ -6,8 +6,7 @@ export const siteConfig = {
   shortDescription:
     "Master carpenters in Sydney — bespoke joinery, decking, renovations & custom carpentry.",
   url: "https://butterflybuilt.com.au",
-  // TODO: Replace with confirmed ABN
-  abn: "00 000 000 000",
+  abn: "90 646 424 795",
   // TODO: Replace with confirmed NSW Builder Licence number
   licence: "NSW Licensed Builder",
   phone: "0457 324 417",
