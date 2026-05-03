@@ -45,7 +45,7 @@ export default function HomePage() {
           </>
         }
         image="/images/hero/hero-home.jpg"
-        imageAlt="Master carpenter at work in the Butterfly Built Dover Heights workshop, Sydney"
+        imageAlt="Curved timber arched framing on a Sydney carpentry project by Butterfly Built"
         primaryCta={{ label: "Get a Free Quote", href: "/contact" }}
         secondaryCta={{ label: `Call ${siteConfig.phone}`, href: `tel:${siteConfig.phoneTel}` }}
       />
