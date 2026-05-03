@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "decking Sydney",
     "renovation carpenter Sydney",
   ],
-  icons: { icon: "/images/logo.svg" },
+  icons: { icon: "/images/butterfly-built-logo.png" },
   openGraph: {
     title: "Butterfly Built | Master Carpenters Sydney",
     description: siteConfig.description,

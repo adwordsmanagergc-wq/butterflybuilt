@@ -30,10 +30,12 @@ export function Header() {
       }`}
     >
       <div className="container-prose flex items-center justify-between gap-4 py-4">
-        <Link href="/" className="flex items-center gap-3" aria-label="Butterfly Built home">
-          {/* TODO: Replace with logo from GitHub upload */}
-          <img src="/images/logo.svg" alt="Butterfly Built" className="h-9 w-auto" />
-          <span className="font-serif text-lg tracking-tight text-charcoal">Butterfly Built</span>
+        <Link href="/" className="flex items-center" aria-label="Butterfly Built home">
+          <img
+            src="/images/butterfly-built-logo.png"
+            alt="Butterfly Built"
+            className="h-10 w-auto invert sm:h-12"
+          />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">

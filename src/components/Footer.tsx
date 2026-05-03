@@ -12,10 +12,12 @@ export function Footer() {
       <div className="container-prose py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div>
-            <Link href="/" className="flex items-center gap-3" aria-label="Butterfly Built home">
-              {/* TODO: Replace with logo from GitHub upload */}
-              <img src="/images/logo.svg" alt="Butterfly Built" className="h-9 w-auto invert" />
-              <span className="font-serif text-lg">Butterfly Built</span>
+            <Link href="/" className="flex items-center" aria-label="Butterfly Built home">
+              <img
+                src="/images/butterfly-built-logo.png"
+                alt="Butterfly Built"
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="mt-4 text-sm text-cream/80">
               Master carpenters in Sydney. Bespoke joinery, decking and renovations from our

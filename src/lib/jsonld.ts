@@ -52,7 +52,7 @@ export const organizationJsonLd = () => ({
   "@type": "Organization",
   name: siteConfig.name,
   url: siteConfig.url,
-  logo: `${siteConfig.url}/images/logo.svg`,
+  logo: `${siteConfig.url}/images/butterfly-built-logo.png`,
   contactPoint: {
     "@type": "ContactPoint",
     telephone: siteConfig.phoneTel,
