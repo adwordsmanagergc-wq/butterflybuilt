@@ -159,10 +159,14 @@ export function PostBody() {
           .
         </li>
         <li>
-          <strong>Complex concrete formwork</strong> — suspended slabs, basement
-          retaining walls, lift pits, cantilevered balconies, garage slabs cut
-          into Hawkesbury sandstone, and pool shells with integrated capping
-          beams.
+          <strong>
+            <Link href="/services/formwork-concrete-formwork">
+              Complex concrete formwork
+            </Link>
+          </strong>{" "}
+          — suspended slabs, basement retaining walls, lift pits, cantilevered
+          balconies, garage slabs cut into Hawkesbury sandstone, and pool
+          shells with integrated capping beams.
         </li>
         <li>
           <strong>Heritage carpentry</strong> on Federation, Victorian and
@@ -247,9 +251,11 @@ export function PostBody() {
         </li>
       </ul>
       <p>
-        For formwork specifically, look for crews who&apos;ve worked on suspended
-        slabs and retaining walls before, and who can show you photos of recent
-        pours. It&apos;s a discipline that rewards experience.
+        For{" "}
+        <Link href="/services/formwork-concrete-formwork">formwork</Link>{" "}
+        specifically, look for crews who&apos;ve worked on suspended slabs and
+        retaining walls before, and who can show you photos of recent pours.
+        It&apos;s a discipline that rewards experience.
       </p>
 
       <h2 id="how-quickly">How quickly can work start?</h2>

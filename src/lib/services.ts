@@ -450,6 +450,96 @@ export const services: Service[] = [
     keywords: ["renovation carpenter Sydney", "extension carpenter Sydney", "carpenter Sydney"],
   },
   {
+    slug: "formwork-concrete-formwork",
+    name: "Formwork & Concrete Formwork",
+    shortName: "Formwork",
+    tagline: "Square, plumb and properly braced — formwork that holds the pour.",
+    metaTitle: "Formwork Sydney | Concrete Formwork Carpenters | Butterfly Built",
+    metaDescription:
+      "Concrete formwork in Sydney by Butterfly Built. Suspended slabs, retaining walls, pool shells and architectural off-form work for the Eastern Suburbs.",
+    heroImage: "/images/services/formwork-hero.jpg",
+    heroAlt:
+      "Plywood and timber formwork ready for a concrete pour on a Sydney project by Butterfly Built",
+    intro:
+      "Formwork is the temporary structure that holds wet concrete in shape until it cures — and it's a carpentry discipline. We design, build and strike formwork for slabs, walls, columns, beams, pool shells and pits across Sydney, working off engineered drawings and detailing tolerances tight enough for off-form finishes. From small house slabs to suspended floors and retaining walls cut into Hawkesbury sandstone, our formwork crew is set up for the difficult sites the Eastern Suburbs throws at us.",
+    benefits: [
+      "Suspended slabs, walls, columns, beams, lift pits and pool shells",
+      "Engineered set-out and bracing built off your structural drawings",
+      "Plywood, formply, steel-framed proprietary systems and traditional timber",
+      "Architectural off-form, board-form and feature finishes",
+      "Coastal and steep-terrain experience — Hawkesbury sandstone benching, raked formwork, retaining walls",
+      "Coordinated with steel fixers, plumbers and your concreter for the pour",
+      "Compliant with NSW WHS — SWMS, edge protection and certified props",
+    ],
+    process: [
+      {
+        step: "Set-out",
+        description:
+          "Drawings reviewed with the engineer, levels shot in, lines snapped — accuracy starts here.",
+      },
+      {
+        step: "Build",
+        description:
+          "Bearers, joists, plywood, walers and ties — braced and propped to take a full pour with no movement.",
+      },
+      {
+        step: "Coordination",
+        description:
+          "Steel fixers and services pre-pour, sign-off from the engineer and certifier where required.",
+      },
+      {
+        step: "Pour day",
+        description:
+          "We're on site for the pour to monitor formwork, check ties, and call any issues early.",
+      },
+      {
+        step: "Strike & finish",
+        description:
+          "Form stripped at the right cure point, edges tidied, off-form faces protected.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What types of formwork do you build?",
+        answer:
+          "Ground slabs, suspended floors, retaining walls, blade walls, columns, beams, lift pits, pool shells, capping beams, footings — both conventional plywood / timber formwork and proprietary systems like Acrow and Doka where the job suits.",
+      },
+      {
+        question: "Do you do architectural off-form concrete?",
+        answer:
+          "Yes. Off-form, board-form and feature finishes need formwork built to a different tolerance — flatter ply, tighter joints, controlled tie patterns. We've delivered off-form work that's gone in as the finished surface.",
+      },
+      {
+        question: "Can you handle steep, rocky Eastern Suburbs sites?",
+        answer:
+          "Yes. A lot of Vaucluse, Dover Heights, Tamarama and South Coogee sit on Hawkesbury sandstone with severe slopes. We bench rock, set raked formwork, chemset rebar back into rock, and brace against engineered tie-downs.",
+      },
+      {
+        question: "Do you pour the concrete as well?",
+        answer:
+          "We focus on the formwork carpentry — the build and strike — and coordinate closely with a trusted concreter for the pour, finish and curing. We can recommend pour crews we've worked with for years.",
+      },
+      {
+        question: "How is formwork priced?",
+        answer:
+          "Usually by square metre of formed face for slabs and walls, or as a lump sum for one-off pours. Pricing reflects complexity — a flat ground slab is straightforward; a curved retaining wall on a sloping rock site is not. We give a fixed-price quote off the structural drawings.",
+      },
+      {
+        question: "Are you compliant with NSW WHS for high-risk work?",
+        answer:
+          "Yes. We document SWMS for every formwork job, provide edge protection on any work above two metres, use certified props and bracing, and carry public liability and workers' compensation cover.",
+      },
+    ],
+    keywords: [
+      "formwork Sydney",
+      "concrete formwork Sydney",
+      "formwork carpenter Sydney",
+      "suspended slab formwork Sydney",
+      "Eastern Suburbs formwork",
+      "carpenter Sydney",
+    ],
+  },
+  {
     slug: "framing-structural-carpentry",
     name: "Framing & Structural Carpentry",
     shortName: "Framing",
