@@ -18,6 +18,25 @@ import { suburbs, getSuburbBySlug } from "@/lib/suburbs";
 import { services } from "@/lib/services";
 import { buildMetadata } from "@/lib/seo";
 import { testimonials } from "@/components/Testimonials";
+import { galleryImages } from "@/lib/gallery";
+
+/**
+ * Deterministic 4-photo pick per suburb from the workshop gallery.
+ * Each suburb gets a stable, distinct starting offset derived from its
+ * slug, so photos don't shuffle between builds and neighbouring suburbs
+ * show different-looking work.
+ */
+function suburbGalleryPicks(slug: string) {
+  const n = galleryImages.length;
+  if (n === 0) return [];
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = (hash * 31 + slug.charCodeAt(i)) >>> 0;
+  }
+  const start = hash % n;
+  const stride = 7; // coprime with 50 → good spread
+  return Array.from({ length: Math.min(4, n) }, (_, i) => galleryImages[(start + i * stride) % n]);
+}
 
 export function generateStaticParams() {
   return suburbs.map((s) => ({ suburb: s.slug }));
@@ -111,7 +130,6 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
           </div>
           <div className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden bg-charcoal-soft">
-              {/* TODO: Replace with Instagram image */}
               <Img src={sub.heroImage} alt={sub.heroAlt} className="h-full w-full object-cover" />
             </div>
           </div>
@@ -157,38 +175,47 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
         </div>
       </Section>
 
-      {/* Case studies (placeholders) */}
+      {/* Recent-work photo strip pulled from the workshop gallery */}
       <Section className="bg-charcoal-soft">
-        <Eyebrow>Recent {sub.name} work</Eyebrow>
+        <Eyebrow>Recent carpentry work</Eyebrow>
         <Heading level={2} className="mt-3 mb-10">
-          A glimpse at projects nearby.
+          A glimpse from the workshop.
         </Heading>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {[1, 2].map((n) => (
-            <article key={n} className="bg-cream/5">
-              <div className="relative aspect-[4/3] overflow-hidden bg-charcoal-soft">
-                {/* TODO: Replace with Instagram image */}
-                <Img
-                  src={`/images/areas/${sub.slug}-case-${n}.jpg`}
-                  alt={`Carpentry case study ${n} in ${sub.name} by Butterfly Built`}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <p className="eyebrow text-timber-300">Case study · {sub.name}</p>
-                <h3 className="mt-2 font-serif text-2xl">
-                  {/* TODO: Replace with real project name */}
-                  {n === 1 ? `${sub.name} Renovation` : `${sub.name} Custom Joinery`}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-cream/60">
-                  {/* TODO: Replace with real case study copy */}
-                  A recent {sub.name} project where we delivered a hand-crafted carpentry package
-                  tailored to the home's architecture and the suburb's coastal conditions.
-                </p>
-              </div>
-            </article>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          {suburbGalleryPicks(sub.slug).map((img) => (
+            <figure
+              key={img.file}
+              className="relative aspect-square overflow-hidden bg-charcoal"
+            >
+              <img
+                src={`/images/gallery/${img.file}`}
+                alt={`Carpentry project by Butterfly Built — servicing ${sub.name} and Sydney's Eastern Suburbs`}
+                width={img.w}
+                height={img.h}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+            </figure>
           ))}
         </div>
+        <p className="mt-6 max-w-prose2 text-sm text-cream/60">
+          Photos are from recent Butterfly Built projects across Sydney&apos;s
+          Eastern Suburbs. See more on our{" "}
+          <Link className="link-underline text-cream" href="/projects">
+            projects page
+          </Link>
+          {" "}or Instagram{" "}
+          <a
+            className="link-underline text-cream"
+            href="https://www.instagram.com/butterfly.built"
+            target="_blank"
+            rel="noreferrer"
+          >
+            @butterfly.built
+          </a>
+          .
+        </p>
       </Section>
 
       <Section>

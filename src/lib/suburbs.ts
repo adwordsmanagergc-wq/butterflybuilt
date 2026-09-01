@@ -23,7 +23,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Bondi | Custom Carpentry & Joinery | Butterfly Built",
     metaDescription:
       "Trusted carpenter in Bondi. Butterfly Built delivers custom joinery, decking and renovations across Bondi from our Dover Heights workshop.",
-    heroImage: "/images/areas/bondi-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-001.jpg",
     heroAlt: "Bondi home with custom timber carpentry by Butterfly Built",
     intro:
       "Bondi homes range from Federation cottages to clifftop architectural builds, and they all share one thing — they sit in salt air, with strong UV and a constant breeze. Working from our Dover Heights workshop just up the road, Butterfly Built is the local carpenter Bondi homeowners trust for joinery, decking and renovations that handle the coast and look beautiful for decades.",
@@ -53,7 +53,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Bondi Beach | Coastal Carpentry | Butterfly Built",
     metaDescription:
       "Carpenter in Bondi Beach for decks, joinery and coastal renovations. Butterfly Built builds for Bondi Beach homes from our Dover Heights base.",
-    heroImage: "/images/areas/bondi-beach-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-006.jpg",
     heroAlt: "Bondi Beach apartment with custom joinery by Butterfly Built",
     intro:
       "Bondi Beach homes and apartments demand carpentry that handles salt, sand and sun. Butterfly Built is just minutes away in Dover Heights, building decks, joinery and apartment fit-outs designed specifically for beachside conditions.",
@@ -82,7 +82,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Bondi Junction | Joinery & Renovations | Butterfly Built",
     metaDescription:
       "Carpenter in Bondi Junction for terraces, apartments and renovations. Butterfly Built delivers premium carpentry from nearby Dover Heights.",
-    heroImage: "/images/areas/bondi-junction-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-011.jpg",
     heroAlt: "Bondi Junction terrace with restored timber carpentry by Butterfly Built",
     intro:
       "Bondi Junction is full of beautiful Victorian terraces, art deco walk-ups and modern apartments. We work across all of them, restoring heritage detail, building custom kitchens and fitting out apartments with built-in storage that gets every centimetre working.",
@@ -105,7 +105,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Tamarama | Coastal Carpentry | Butterfly Built",
     metaDescription:
       "Custom carpentry in Tamarama. Butterfly Built builds decks, joinery and renovations for Tamarama homes from our nearby Dover Heights workshop.",
-    heroImage: "/images/areas/tamarama-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-016.jpg",
     heroAlt: "Tamarama clifftop home with custom timber deck by Butterfly Built",
     intro:
       "Tamarama is one of Sydney's most beautiful pockets — small, exposed and architecturally sharp. The homes here demand engineered, detail-driven carpentry: cantilevered decks, refined joinery and weather-tight finishes. We work just up the road and know the suburb well.",
@@ -128,7 +128,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Bronte | Custom Joinery & Decks | Butterfly Built",
     metaDescription:
       "Carpenter in Bronte. Butterfly Built delivers custom joinery, decks and renovations for Bronte homes — based nearby in Dover Heights.",
-    heroImage: "/images/areas/bronte-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-021.jpg",
     heroAlt: "Bronte home with timber deck and custom joinery by Butterfly Built",
     intro:
       "Bronte is family heartland — semis, cottages and renovated homes minutes from the beach. We've built decks, kitchens and built-ins for Bronte clients all over the suburb, with a focus on durable detail and finishes that handle kids, sand and sun.",
@@ -151,7 +151,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Vaucluse | Premium Carpentry | Butterfly Built",
     metaDescription:
       "Premium carpenter in Vaucluse for harbourside homes. Butterfly Built delivers bespoke joinery, decking and renovations from nearby Dover Heights.",
-    heroImage: "/images/areas/vaucluse-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-026.jpg",
     heroAlt: "Vaucluse harbourside home with custom timber joinery by Butterfly Built",
     intro:
       "Vaucluse demands quiet, precise carpentry — the kind that sits inside an architecturally significant home and disappears into the architecture. From our workshop in neighbouring Dover Heights, we deliver bespoke joinery, harbourside decks and refined fit-outs across Vaucluse.",
@@ -174,7 +174,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Rose Bay | Custom Joinery | Butterfly Built",
     metaDescription:
       "Carpenter in Rose Bay for harbourside homes and apartments. Butterfly Built designs and builds custom joinery from nearby Dover Heights.",
-    heroImage: "/images/areas/rose-bay-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-031.jpg",
     heroAlt: "Rose Bay home with bespoke kitchen joinery by Butterfly Built",
     intro:
       "Rose Bay sits across the ridge from our Dover Heights workshop. The homes range from harbourside Federation through to luxury apartments, and our work here ranges just as widely — kitchens, wardrobes, decks and full-home fit-outs.",
@@ -197,7 +197,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Double Bay | Premium Carpentry | Butterfly Built",
     metaDescription:
       "Premium carpenter in Double Bay. Butterfly Built delivers bespoke joinery, kitchens and renovations across Double Bay from nearby Dover Heights.",
-    heroImage: "/images/areas/double-bay-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-036.jpg",
     heroAlt: "Double Bay apartment with custom timber joinery by Butterfly Built",
     intro:
       "Double Bay homes and apartments expect a high finish standard, and that's exactly where Butterfly Built lives. We deliver custom kitchens, walk-in wardrobes and full apartment fit-outs across Double Bay with the precision and material quality the suburb deserves.",
@@ -220,7 +220,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Dover Heights | Local Carpentry | Butterfly Built",
     metaDescription:
       "Butterfly Built is based in Dover Heights, Sydney. Local custom carpentry, joinery and renovations from your neighbourhood master carpenters.",
-    heroImage: "/images/areas/dover-heights-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-041.jpg",
     heroAlt: "Dover Heights home with custom carpentry by Butterfly Built",
     intro:
       "Dover Heights is home for Butterfly Built. Our workshop is based here, and a lot of our work happens within walking distance — clifftop renovations, custom kitchens, hardwood decks and everything in between. If you're in Dover Heights and want a local carpenter who knows the suburb, you've found us.",
@@ -243,7 +243,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter Watsons Bay | Coastal Carpentry | Butterfly Built",
     metaDescription:
       "Carpenter in Watsons Bay for harbour and coastal homes. Butterfly Built builds bespoke joinery and decks from nearby Dover Heights.",
-    heroImage: "/images/areas/watsons-bay-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-046.jpg",
     heroAlt: "Watsons Bay harbourside home with custom timber joinery by Butterfly Built",
     intro:
       "Watsons Bay is one of Sydney's quietest harbour pockets, with cottages and architectural builds tucked between the harbour and South Head. We work here regularly, delivering joinery, decks and renovations that suit the suburb's heritage character and exposed coastal conditions.",
@@ -267,7 +267,7 @@ export const suburbs: Suburb[] = [
     metaTitle: "Carpenter North Bondi | Coastal Carpentry | Butterfly Built",
     metaDescription:
       "Carpenter in North Bondi for coastal homes. Butterfly Built delivers custom joinery and decks from nearby Dover Heights.",
-    heroImage: "/images/areas/north-bondi-hero.jpg",
+    heroImage: "/images/gallery/butterfly-built-sydney-carpentry-049.jpg",
     heroAlt: "North Bondi home with timber deck and joinery by Butterfly Built",
     intro:
       "North Bondi homes sit between the beach and the cliffs of Ben Buckler, and they need carpentry built for it. From our nearby Dover Heights workshop, Butterfly Built delivers decks, joinery and renovations to North Bondi homes that face the Pacific.",
