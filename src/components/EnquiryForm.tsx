@@ -68,7 +68,7 @@ export function EnquiryForm({
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className={`grid gap-4 ${compact ? "" : "rounded-none border border-cream/10 bg-charcoal-soft p-6 sm:p-8"}`}
+      className={`grid gap-4 ${compact ? "" : "rounded-3xl border border-cream/10 bg-charcoal-soft p-6 sm:p-8"}`}
       aria-labelledby="enquiry-heading"
     >
       <input

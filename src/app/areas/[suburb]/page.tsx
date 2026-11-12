@@ -258,7 +258,7 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
 
           <div className="grid gap-6 md:grid-cols-12">
             <div className="md:col-span-7">
-              <div className="h-full border border-cream/10 p-8 sm:p-10">
+              <div className="h-full rounded-3xl border border-cream/10 p-8 sm:p-10">
                 <p className="text-[10px] uppercase tracking-wider2 text-timber-300 mb-5">
                   Access &amp; logistics
                 </p>
@@ -274,7 +274,7 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
             </div>
 
             <div className="md:col-span-5 grid gap-6">
-              <div className="border border-cream/10 p-7 sm:p-8">
+              <div className="rounded-3xl border border-cream/10 p-7 sm:p-8">
                 <p className="text-[10px] uppercase tracking-wider2 text-timber-300 mb-4">
                   Terrain &amp; substructure
                 </p>
@@ -282,7 +282,7 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
                   {terrainLine(f.geographyNote, f.elevationM)}
                 </p>
               </div>
-              <div className="border border-cream/10 p-7 sm:p-8">
+              <div className="rounded-3xl border border-cream/10 p-7 sm:p-8">
                 <p className="text-[10px] uppercase tracking-wider2 text-timber-300 mb-4">
                   Typical work
                 </p>

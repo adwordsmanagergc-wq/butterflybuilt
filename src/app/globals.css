@@ -48,8 +48,27 @@ body {
     letter-spacing: 0.2em;
   }
   .spec-rule {
-    @apply block h-px flex-1 bg-cream/15;
+    @apply relative block h-px flex-1 bg-cream/15;
   }
+  /* Small butterfly ornament breaking the hairline at its centre. The
+     background is the body colour so the line appears to "cut through"
+     behind the glyph. Alt-section backgrounds get their own override. */
+  .spec-rule::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 28px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+    background-color: theme(colors.charcoal.DEFAULT);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 12' fill='none' stroke='%23bf9266' stroke-width='0.9' stroke-linecap='round' stroke-linejoin='round'><path d='M13 6 C 9 1.5 4 1 1.5 4 C 0.5 6 1 8 2.5 10 C 6 11.5 10 10.5 13 7 Z'/><path d='M13 6 C 17 1.5 22 1 24.5 4 C 25.5 6 25 8 23.5 10 C 20 11.5 16 10.5 13 7 Z'/><line x1='13' y1='1' x2='13' y2='11' stroke-width='0.6'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 24px 11px;
+    background-position: center;
+  }
+  .bg-charcoal-soft .spec-rule::before { background-color: theme(colors.charcoal.soft); }
+  .bg-black .spec-rule::before { background-color: #000; }
 
   .h-display {
     @apply font-serif font-light leading-[1.05] tracking-tight text-cream;
@@ -69,11 +88,11 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-none border border-cream bg-cream px-6 py-3 text-sm font-medium uppercase tracking-wider2 text-charcoal transition hover:bg-timber-200 hover:border-timber-200;
+    @apply inline-flex items-center justify-center rounded-full border border-cream bg-cream px-7 py-3 text-sm font-medium uppercase tracking-wider2 text-charcoal transition hover:bg-timber-200 hover:border-timber-200;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-none border border-cream/40 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-wider2 text-cream transition hover:bg-cream hover:text-charcoal;
+    @apply inline-flex items-center justify-center rounded-full border border-cream/40 bg-transparent px-7 py-3 text-sm font-medium uppercase tracking-wider2 text-cream transition hover:bg-cream hover:text-charcoal;
   }
 
   .btn-ghost {
@@ -102,7 +121,15 @@ body {
   }
 
   .input-base {
-    @apply w-full border border-cream/15 bg-charcoal-soft px-4 py-3 text-sm text-cream placeholder:text-cream/40 focus:outline-none focus:border-cream/60;
+    @apply w-full rounded-full border border-cream/15 bg-charcoal-soft px-5 py-3 text-sm text-cream placeholder:text-cream/40 focus:outline-none focus:border-cream/60;
+  }
+  /* textareas can't be pill-shaped; keep them soft-rounded */
+  textarea.input-base {
+    @apply rounded-2xl;
+  }
+  /* selects behave like inputs */
+  select.input-base {
+    @apply rounded-full;
   }
 
   /* Editorial index row (services, suburbs): large-type numbered list. */
