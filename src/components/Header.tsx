@@ -51,15 +51,9 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <a
-            href={`tel:${siteConfig.phoneTel}`}
-            className="text-sm tracking-wider2 text-cream hover:text-timber-300"
-          >
-            {siteConfig.phone}
-          </a>
-          <Link href="/contact" className="btn-primary">
-            Get a Quote
+        <div className="hidden items-center md:flex">
+          <Link href="/contact" className="btn-butterfly" aria-label="Get a quote">
+            Quote
           </Link>
         </div>
 

@@ -99,6 +99,45 @@ body {
     @apply inline-flex items-center gap-2 text-sm uppercase tracking-wider2 text-cream/80 hover:text-timber-300 transition;
   }
 
+  /* Compact butterfly-silhouette CTA used in the header. The SVG fills
+     100% of the button so the clickable area matches the visible shape.
+     Text sits on top, centred, with left/right padding tuned to keep
+     "QUOTE" inside the body between the two wings. */
+  .btn-butterfly {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.1rem;
+    min-width: 108px;
+    height: 42px;
+    color: theme(colors.charcoal.DEFAULT);
+    font-family: theme(fontFamily.sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: transparent;
+    isolation: isolate;
+    transition: transform 0.25s ease;
+  }
+  .btn-butterfly::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 46' preserveAspectRatio='none'><path fill='%23f8f4ee' d='M65 10 C 52 -2 30 -2 14 8 C 2 18 2 28 14 38 C 30 50 52 48 60 40 L 65 34 L 70 40 C 78 48 100 50 116 38 C 128 28 128 18 116 8 C 100 -2 78 -2 65 10 Z'/></svg>");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transition: filter 0.25s ease;
+  }
+  .btn-butterfly:hover::before {
+    filter: brightness(0.96) sepia(0.15) hue-rotate(-10deg) saturate(1.5);
+  }
+  .btn-butterfly:active {
+    transform: scale(0.97);
+  }
+
   /* Editorial arrow CTA: bare, text-first, draws underline on hover. */
   .btn-arrow {
     @apply inline-flex items-baseline gap-4 text-cream transition;
