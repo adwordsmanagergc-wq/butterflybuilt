@@ -1,9 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Section, Eyebrow, Heading } from "@/components/Section";
+import { Section, Heading } from "@/components/Section";
 import { TrustStrip } from "@/components/TrustStrip";
-import { ServicesGrid } from "@/components/ServicesGrid";
 import { FAQ } from "@/components/FAQ";
 import { ProcessSection } from "@/components/ProcessSection";
 import { EnquiryForm } from "@/components/EnquiryForm";
@@ -33,9 +32,6 @@ export function generateMetadata({ params }: { params: { suburb: string } }) {
   });
 }
 
-// Per-suburb FAQ generator. Pulls a local street list and (when the
-// Wikipedia article mentions one) a heritage line into the Q&A so the
-// four questions on each suburb page differ meaningfully for SEO.
 function suburbFaqs(sub: Suburb) {
   const streetsList = sub.facts.notableStreets.slice(0, 3).join(", ");
   const heritageQ = sub.facts.heritageNote
@@ -76,9 +72,15 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
     .map((slug) => getSuburbBySlug(slug))
     .filter((s): s is Suburb => Boolean(s));
 
-  const featuredServices = services.slice(0, 6);
+  const featuredServices = services.slice(0, 10);
   const faqs = suburbFaqs(sub);
   const f = sub.facts;
+  const chapter = (n: string, label: string) => (
+    <div className="spec-label mb-8">
+      <span className="spec-code">{n} / {label}</span>
+      <span className="spec-rule" />
+    </div>
+  );
 
   return (
     <>
@@ -100,54 +102,82 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
       <JsonLd data={faqJsonLd(faqs)} />
       <JsonLd data={reviewJsonLd(testimonials)} />
 
-      {/* ============================================================== */}
-      {/* Hero: asymmetric 7/5 split, text left, facts card right.        */}
-      {/* Variance 7 per design brief: no centred hero, keep it           */}
-      {/* information-rich, no photo. Hero copy is one short subtext      */}
-      {/* line so it fits viewport with the facts card.                   */}
-      {/* ============================================================== */}
+      {/* HERO */}
       <section className="pt-12 sm:pt-16">
-        <div className="container-prose">
+        <div className="container-wide">
           <nav
             aria-label="Breadcrumb"
-            className="mb-10 text-xs uppercase tracking-wider2 text-cream/60"
+            className="mb-10 text-[10px] uppercase tracking-wider2 text-cream/55"
           >
-            <Link href="/" className="hover:text-timber-300">
-              Home
-            </Link>
+            <Link href="/" className="hover:text-timber-300">Home</Link>
             <span aria-hidden> / </span>
-            <Link href="/areas/bondi" className="hover:text-timber-300">
-              Areas
-            </Link>
+            <Link href="/areas/bondi" className="hover:text-timber-300">Areas</Link>
             <span aria-hidden> / </span>
             <span className="text-cream">{sub.name}</span>
           </nav>
 
-          <div className="grid gap-12 md:grid-cols-12 md:gap-x-16">
-            <div className="md:col-span-7">
-              <Eyebrow>
-                Carpenter &middot; {sub.name} &middot; {sub.postcode}
-              </Eyebrow>
-              <Heading level={1} className="mt-5">
-                Carpenter in{" "}
-                <span className="text-timber-300">{sub.name}</span>.
-              </Heading>
-              <p className="mt-6 max-w-prose2 text-lg leading-relaxed text-cream/80">
-                {sub.intro}
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link href="#enquire" className="btn-primary">
-                  Get a quote
-                </Link>
-                <a href="tel:+61457324417" className="btn-outline">
-                  Call 0457 324 417
-                </a>
-              </div>
-            </div>
+          <div className="spec-label reveal">
+            <span className="spec-code">AREA / {sub.postcode}</span>
+            <span className="spec-rule" />
+            <span className="text-cream/50">{f.lga}</span>
+          </div>
 
-            <aside className="md:col-span-5">
-              <SuburbFactSheet sub={sub} />
-            </aside>
+          <h1 className="display-xl mt-8 reveal">
+            {sub.name.split(" ").map((w, i, arr) => (
+              <span key={i}>
+                {w}
+                {i < arr.length - 1 && <br />}
+              </span>
+            ))}
+            <span className="text-timber-300">.</span>
+          </h1>
+
+          <div className="mt-12 grid gap-10 sm:mt-16 md:grid-cols-12 md:gap-16">
+            <p className="md:col-span-6 text-lg leading-relaxed text-cream/75 max-w-prose2">
+              {sub.intro}
+            </p>
+            <div className="md:col-span-6 md:justify-self-end md:self-end">
+              <Link href="#enquire" className="btn-arrow">
+                Get a quote
+              </Link>
+              <p className="mt-3 text-[11px] uppercase tracking-wider2 text-cream/50">
+                Carpenter in {sub.name}, {sub.postcode}
+              </p>
+            </div>
+          </div>
+
+          {/* Fact tiles */}
+          <div className="mt-16 sm:mt-20">
+            <div className="spec-label mb-6">
+              <span className="spec-code">AT A GLANCE</span>
+              <span className="spec-rule" />
+            </div>
+            <dl className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 lg:grid-cols-6">
+              <FactTile label="Council" value={shortLga(f.lga)} />
+              <FactTile label="Postcode" value={sub.postcode} />
+              {f.population != null && (
+                <FactTile
+                  label="Population"
+                  value={formatCompact(f.population)}
+                  sub={f.censusYear ? `Census ${f.censusYear}` : undefined}
+                />
+              )}
+              {f.areaKm2 != null && (
+                <FactTile label="Area" value={`${f.areaKm2}`} sub="km²" />
+              )}
+              {f.distanceFromCbdKm != null && (
+                <FactTile
+                  label="From CBD"
+                  value={`${f.distanceFromCbdKm}`}
+                  sub="km east"
+                />
+              )}
+              <FactTile
+                label="From workshop"
+                value={sub.slug === "dover-heights" ? "Local" : "10"}
+                sub={sub.slug === "dover-heights" ? undefined : "minutes"}
+              />
+            </dl>
           </div>
         </div>
       </section>
@@ -156,182 +186,207 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
         <TrustStrip />
       </div>
 
-      {/* ============================================================== */}
-      {/* About: historical prose from Wikipedia, with a right aside      */}
-      {/* for housing era and heritage. Information architecture that     */}
-      {/* makes every suburb page genuinely unique.                       */}
-      {/* ============================================================== */}
-      <Section>
-        <div className="grid gap-12 md:grid-cols-12 md:gap-x-16">
-          <div className="md:col-span-7">
-            <Eyebrow>About {sub.name}</Eyebrow>
-            <Heading level={2} className="mt-5 mb-6">
-              The suburb, in brief.
-            </Heading>
-            <div className="space-y-5 text-cream/85 text-base leading-relaxed sm:text-lg">
-              {f.foundedOrNamedNote && <p>{f.foundedOrNamedNote}</p>}
-              <p>{f.historicalNote}</p>
-              {f.geographyNote && <p>{f.geographyNote}</p>}
-              {f.demographicsNote && (
-                <p className="text-cream/60 text-sm">{f.demographicsNote}</p>
-              )}
+      {/* ABOUT */}
+      <section className="mt-24 sm:mt-32">
+        <div className="container-wide">
+          {chapter("02", `About ${sub.name}`)}
+          <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+            <div className="md:col-span-7">
+              <Heading level={2} className="display-lg">
+                The suburb, in brief.
+              </Heading>
+              <div className="mt-8 space-y-5 text-cream/85 text-lg leading-relaxed">
+                {f.foundedOrNamedNote && <p>{f.foundedOrNamedNote}</p>}
+                <p>{f.historicalNote}</p>
+                {f.geographyNote && <p>{f.geographyNote}</p>}
+                {f.demographicsNote && (
+                  <p className="text-cream/60 text-sm">{f.demographicsNote}</p>
+                )}
+              </div>
             </div>
-          </div>
 
-          <aside className="md:col-span-5 md:pl-6 md:border-l md:border-cream/10">
-            {(f.housingEra || sub.housingStyles) && (
-              <div>
-                <p className="text-[11px] uppercase tracking-wider2 text-cream/50 mb-3">
-                  Housing stock
+            <aside className="md:col-span-5 md:pl-8 md:border-l md:border-cream/10 space-y-10">
+              {(f.housingEra || sub.housingStyles) && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider2 text-cream/50 mb-3">
+                    Housing stock
+                  </p>
+                  <p className="text-cream/80 text-sm leading-relaxed">
+                    {f.housingEra || sub.housingStyles}
+                  </p>
+                </div>
+              )}
+              {f.heritageNote && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider2 text-cream/50 mb-3">
+                    Heritage items
+                  </p>
+                  <p className="text-cream/80 text-sm leading-relaxed">
+                    {f.heritageNote}
+                  </p>
+                </div>
+              )}
+              {f.notableBuildings.length > 0 && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider2 text-cream/50 mb-3">
+                    Landmarks
+                  </p>
+                  <ul className="text-cream/80 text-sm leading-relaxed">
+                    {f.notableBuildings.slice(0, 4).map((b) => (
+                      <li
+                        key={b}
+                        className="border-t border-cream/10 py-2 first:border-t-0"
+                      >
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* WORKING IN SUBURB */}
+      <section className="mt-24 sm:mt-32 bg-charcoal-soft py-20 sm:py-28">
+        <div className="container-wide">
+          {chapter("03", `Working in ${sub.name}`)}
+          <Heading level={2} className="display-lg mb-12">
+            What a {sub.name} project looks like.
+          </Heading>
+
+          <div className="grid gap-6 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <div className="h-full border border-cream/10 p-8 sm:p-10">
+                <p className="text-[10px] uppercase tracking-wider2 text-timber-300 mb-5">
+                  Access &amp; logistics
                 </p>
-                <p className="text-cream/80 text-sm leading-relaxed">
-                  {f.housingEra || sub.housingStyles}
+                <p className="text-cream/85 text-lg leading-relaxed">
+                  Regularly on {streetListSentence(f.notableStreets)}. Based in
+                  Dover Heights, {sub.name} is a short run for us, and we
+                  arrange parking permits, out-of-hours deliveries and traffic
+                  management as the site needs. On tight lots we plan material
+                  drops around the street rhythm rather than leaving timber on
+                  the kerb overnight.
                 </p>
               </div>
-            )}
-            {f.heritageNote && (
-              <div className="mt-8">
-                <p className="text-[11px] uppercase tracking-wider2 text-cream/50 mb-3">
-                  Heritage items
+            </div>
+
+            <div className="md:col-span-5 grid gap-6">
+              <div className="border border-cream/10 p-7 sm:p-8">
+                <p className="text-[10px] uppercase tracking-wider2 text-timber-300 mb-4">
+                  Terrain &amp; substructure
                 </p>
-                <p className="text-cream/80 text-sm leading-relaxed">
-                  {f.heritageNote}
+                <p className="text-cream/85 leading-relaxed">
+                  {terrainLine(f.geographyNote, f.elevationM)}
                 </p>
               </div>
-            )}
-            {f.notableBuildings.length > 0 && (
-              <div className="mt-8">
-                <p className="text-[11px] uppercase tracking-wider2 text-cream/50 mb-3">
-                  Landmarks
+              <div className="border border-cream/10 p-7 sm:p-8">
+                <p className="text-[10px] uppercase tracking-wider2 text-timber-300 mb-4">
+                  Typical work
                 </p>
-                <ul className="text-cream/80 text-sm leading-relaxed">
-                  {f.notableBuildings.slice(0, 4).map((b) => (
-                    <li key={b} className="border-t border-cream/10 py-2 first:border-t-0">
-                      {b}
+                <ul className="space-y-2 text-cream/85 text-sm leading-relaxed">
+                  {sub.commonProjects.map((p) => (
+                    <li key={p} className="flex gap-3">
+                      <span
+                        aria-hidden
+                        className="mt-2 h-px w-3 flex-shrink-0 bg-timber-300"
+                      />
+                      {p}
                     </li>
                   ))}
                 </ul>
               </div>
-            )}
-          </aside>
-        </div>
-      </Section>
-
-      {/* ============================================================== */}
-      {/* Working in {suburb}: asymmetric bento, 2 columns (not 3         */}
-      {/* identical cards). Left: large prose block pulling the local    */}
-      {/* streets. Right: small stacked terrain + typical-work blocks.    */}
-      {/* ============================================================== */}
-      <Section className="bg-charcoal-soft">
-        <Eyebrow>Working in {sub.name}</Eyebrow>
-        <Heading level={2} className="mt-5 mb-10">
-          What a {sub.name} project looks like.
-        </Heading>
-
-        <div className="grid gap-8 md:grid-cols-12">
-          <div className="md:col-span-7">
-            <div className="h-full border border-cream/10 bg-cream/[0.03] p-8">
-              <p className="text-[11px] uppercase tracking-wider2 text-timber-300 mb-4">
-                Access &amp; logistics
-              </p>
-              <p className="text-cream/85 text-lg leading-relaxed">
-                We&apos;re regularly on {streetListSentence(f.notableStreets)}. Being
-                based in Dover Heights, {sub.name} is a short run for us, and we
-                arrange parking permits, out-of-hours deliveries and traffic
-                management as the site needs. On tight lots we plan material
-                drops around the street rhythm rather than leaving timber on
-                the kerb overnight.
-              </p>
-            </div>
-          </div>
-
-          <div className="md:col-span-5 grid gap-6">
-            <div className="border border-cream/10 bg-cream/[0.03] p-6">
-              <p className="text-[11px] uppercase tracking-wider2 text-timber-300 mb-3">
-                Terrain &amp; substructure
-              </p>
-              <p className="text-cream/85 leading-relaxed">
-                {terrainLine(f.geographyNote, f.elevationM)}
-              </p>
-            </div>
-            <div className="border border-cream/10 bg-cream/[0.03] p-6">
-              <p className="text-[11px] uppercase tracking-wider2 text-timber-300 mb-3">
-                Typical work
-              </p>
-              <ul className="space-y-2 text-cream/85 text-sm leading-relaxed">
-                {sub.commonProjects.map((p) => (
-                  <li key={p} className="flex gap-3">
-                    <span
-                      aria-hidden
-                      className="mt-2 h-px w-3 flex-shrink-0 bg-timber-300"
-                    />
-                    {p}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* ================= Services ================= */}
-      <Section>
-        <Heading level={2} className="mb-10">
-          What we build for {sub.name} homes.
-        </Heading>
-        <ServicesGrid limit={featuredServices.length} />
-      </Section>
+      {/* SERVICES as editorial index */}
+      <section className="mt-24 sm:mt-32">
+        <div className="container-wide">
+          {chapter("04", `Services in ${sub.name}`)}
+          <Heading level={2} className="display-lg mb-12">
+            What we build for {sub.name} homes.
+          </Heading>
+          <ol aria-label={`Carpentry services for ${sub.name}`}>
+            {featuredServices.map((s, i) => (
+              <li key={s.slug}>
+                <Link href={`/services/${s.slug}`} className="index-row">
+                  <span className="index-num">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="index-title">{s.name}</span>
+                  <span className="index-tail">
+                    See <span aria-hidden>→</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-10">
+            <Link href="/services" className="btn-ghost">
+              All services <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* ================= Process ================= */}
+      {/* PROCESS */}
       <Section className="bg-charcoal-soft">
-        <Heading level={2} className="mb-10">
+        {chapter("05", "Process")}
+        <Heading level={2} className="display-lg mb-12">
           How we work in {sub.name}.
         </Heading>
         <ProcessSection />
       </Section>
 
-      {/* ================= FAQs ================= */}
+      {/* FAQ */}
       <Section>
-        <Heading level={2} className="mb-10">
-          {sub.name} questions, answered.
+        {chapter("06", "FAQ")}
+        <Heading level={2} className="display-lg mb-12">
+          {sub.name}, answered.
         </Heading>
         <FAQ faqs={faqs} />
       </Section>
 
-      {/* ================= Nearby suburbs ================= */}
+      {/* NEARBY SUBURBS */}
       {neighbourSubs.length > 0 && (
-        <Section className="bg-charcoal-soft">
-          <Heading level={2} className="mb-10">
-            Nearby suburbs we also work in.
-          </Heading>
-          <div className="grid grid-cols-2 gap-px bg-cream/10 sm:grid-cols-3 lg:grid-cols-4">
-            {neighbourSubs.map((n) => (
-              <Link
-                key={n.slug}
-                href={`/areas/${n.slug}`}
-                className="group flex flex-col gap-1 bg-cream/5 px-5 py-5 transition hover:bg-cream/10 sm:px-6"
-              >
-                <span className="font-serif text-lg leading-tight text-cream sm:text-xl">
-                  {n.name}
-                </span>
-                <span className="text-[10px] uppercase tracking-wider2 text-cream/60 group-hover:text-timber-300 sm:text-xs">
-                  {n.postcode} <span aria-hidden>&rarr;</span>
-                </span>
-              </Link>
-            ))}
+        <section className="mt-24 sm:mt-32 bg-charcoal-soft py-20 sm:py-28">
+          <div className="container-wide">
+            {chapter("07", "Nearby")}
+            <Heading level={2} className="display-lg mb-12">
+              Nearby suburbs.
+            </Heading>
+            <ol>
+              {neighbourSubs.map((n, i) => (
+                <li key={n.slug}>
+                  <Link href={`/areas/${n.slug}`} className="index-row">
+                    <span className="index-num">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="index-title">{n.name}</span>
+                    <span className="index-tail">
+                      {n.postcode} <span aria-hidden>→</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
           </div>
-        </Section>
+        </section>
       )}
 
-      {/* ================= Enquire ================= */}
+      {/* ENQUIRE */}
       <Section id="enquire">
+        {chapter("08", "Enquire")}
         <div className="grid gap-12 md:grid-cols-12 md:gap-x-16">
           <div className="md:col-span-5">
-            <Eyebrow>Enquire</Eyebrow>
-            <Heading level={2} className="mt-5">
-              Carpenter in {sub.name}. Let&apos;s talk.
+            <Heading level={2} className="display-lg">
+              Carpenter in {sub.name}.
             </Heading>
-            <p className="mt-4 text-cream/80">
+            <p className="mt-6 text-cream/80">
               Tell us about your project. We respond within one business day.
             </p>
           </div>
@@ -344,11 +399,22 @@ export default function SuburbPage({ params }: { params: { suburb: string } }) {
   );
 }
 
-/* ---- Local helpers kept here so the template reads top to bottom ---- */
+/* ================= helpers ================= */
 
-function formatPopulation(n: number | null, year: number | null) {
-  if (n == null) return null;
-  return year ? `${n.toLocaleString()} (${year})` : n.toLocaleString();
+function formatCompact(n: number) {
+  if (n >= 1000) {
+    const t = (n / 1000).toFixed(n >= 10000 ? 0 : 1);
+    return `${t}k`;
+  }
+  return n.toLocaleString();
+}
+
+function shortLga(lga: string) {
+  if (/Waverley/.test(lga) && /Woollahra/.test(lga)) return "Wav / Wool";
+  if (/Waverley/.test(lga)) return "Waverley";
+  if (/Woollahra/.test(lga)) return "Woollahra";
+  if (/Randwick/.test(lga)) return "Randwick";
+  return lga.split(" ")[0];
 }
 
 function streetListSentence(streets: string[]) {
@@ -370,53 +436,26 @@ function terrainLine(geo: string | null, elevationM: number | null) {
   return pieces.join(" ");
 }
 
-/* ============================= Fact sheet ============================ */
+/* ================= FactTile ================= */
 
-function SuburbFactSheet({ sub }: { sub: Suburb }) {
-  const f = sub.facts;
-  const population = formatPopulation(f.population, f.censusYear);
+function FactTile({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: ReactNode;
+  sub?: string;
+}) {
   return (
-    <div className="border border-cream/15 bg-cream/[0.03] p-6 sm:p-7">
-      <div className="mb-5 flex items-baseline justify-between">
-        <p className="text-[10px] uppercase tracking-wider2 text-cream/50">
-          Suburb facts
+    <div>
+      <p className="fact-value">{value}</p>
+      <p className="fact-label">{label}</p>
+      {sub && (
+        <p className="text-[10px] uppercase tracking-wider2 text-cream/40 mt-1">
+          {sub}
         </p>
-        <p className="text-[10px] uppercase tracking-wider2 text-cream/50">
-          NSW
-        </p>
-      </div>
-      <dl>
-        <FactRow label="Council" value={f.lga} />
-        <FactRow label="Postcode" value={sub.postcode} />
-        {population && <FactRow label="Population" value={population} />}
-        {f.areaKm2 != null && (
-          <FactRow label="Area" value={`${f.areaKm2} km²`} />
-        )}
-        {f.distanceFromCbdKm != null && (
-          <FactRow
-            label="From Sydney CBD"
-            value={`${f.distanceFromCbdKm} km east`}
-          />
-        )}
-        {f.elevationM != null && (
-          <FactRow label="Elevation" value={`${f.elevationM} m`} />
-        )}
-        <FactRow
-          label="From our workshop"
-          value={sub.slug === "dover-heights" ? "Local" : "10 minutes"}
-        />
-      </dl>
-    </div>
-  );
-}
-
-function FactRow({ label, value }: { label: string; value: ReactNode }) {
-  return (
-    <div className="flex items-baseline justify-between gap-6 border-t border-cream/10 py-3 first:border-t-0">
-      <dt className="text-[11px] uppercase tracking-wider2 text-cream/50">
-        {label}
-      </dt>
-      <dd className="text-right font-serif text-base text-cream">{value}</dd>
+      )}
     </div>
   );
 }

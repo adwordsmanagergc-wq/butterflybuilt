@@ -1,250 +1,359 @@
 import Link from "next/link";
-import { Hero } from "@/components/Hero";
 import { TrustStrip } from "@/components/TrustStrip";
-import { ServicesGrid } from "@/components/ServicesGrid";
-import { AreasGrid } from "@/components/AreasGrid";
 import { ProcessSection } from "@/components/ProcessSection";
 import { Testimonials, testimonials } from "@/components/Testimonials";
 import { PhotoMarquee } from "@/components/PhotoMarquee";
 import { FAQ } from "@/components/FAQ";
 import { EnquiryForm } from "@/components/EnquiryForm";
-import { Section, Eyebrow, Heading } from "@/components/Section";
+import { Section, Heading } from "@/components/Section";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd, faqJsonLd, reviewJsonLd } from "@/lib/jsonld";
 import { homepageFaqs } from "@/lib/faqs";
 import { siteConfig } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
+import { services } from "@/lib/services";
+import { suburbs, PRIMARY_SUBURB_SLUGS } from "@/lib/suburbs";
 
 export const metadata = buildMetadata({
-  title: "Carpenter Sydney | Master Carpentry & Bespoke Joinery — Butterfly Built",
+  title: "Carpenter Sydney | Butterfly Built | Master Carpentry & Joinery",
   description:
     "Butterfly Built is a master carpentry company in Sydney, based in Dover Heights. Custom joinery, decking, kitchens, wardrobes and renovations across the Eastern Suburbs.",
   path: "/",
 });
 
 export default function HomePage() {
+  const featuredSuburbs = suburbs.filter((s) =>
+    PRIMARY_SUBURB_SLUGS.includes(s.slug),
+  );
+
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", url: "/" }])} />
       <JsonLd data={faqJsonLd(homepageFaqs)} />
-      <JsonLd data={reviewJsonLd(testimonials.map((t) => ({ ...t, body: t.body })))} />
+      <JsonLd data={reviewJsonLd(testimonials)} />
 
-      <Hero
-        eyebrow="Master Carpenters · Sydney · Est. Dover Heights"
-        heading={
-          <>
-            Master Carpenters in Sydney —
-            <br /> Bespoke Craftsmanship by <em className="not-italic text-timber-300">Butterfly Built</em>.
-          </>
-        }
-        sub={
-          <>
-            Based in Dover Heights and servicing all of Sydney with a focus on the Eastern
-            Suburbs, we deliver custom joinery, decking, kitchens, wardrobes and renovation
-            carpentry — built to last, finished by hand.
-          </>
-        }
-        image="/images/hero/hero-home.jpg"
-        imageAlt="Curved timber arched framing on a Sydney carpentry project by Butterfly Built"
-        primaryCta={{ label: "Get a Free Quote", href: "/contact" }}
-        secondaryCta={{ label: `Call ${siteConfig.phone}`, href: `tel:${siteConfig.phoneTel}` }}
-      />
-
-      <TrustStrip />
-
-      {/* About snippet — LLM-friendly facts */}
-      <Section id="about-snippet">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Eyebrow>About Butterfly Built</Eyebrow>
-            <Heading level={2} className="mt-4">
-              Hand-crafted carpentry from a Dover Heights workshop.
-            </Heading>
+      {/* ====================================================== */}
+      {/* HERO: display-first, wordmark as the entire first         */}
+      {/* screen. Full viewport, left-aligned, massive Fraunces.    */}
+      {/* ====================================================== */}
+      <section className="relative pt-16 min-h-[92vh] flex flex-col justify-between">
+        <div className="container-wide w-full">
+          <div className="spec-label reveal">
+            <span className="spec-code">01 / Studio</span>
+            <span className="spec-rule" />
+            <span className="text-cream/40">Est. Dover Heights</span>
           </div>
-          <div className="md:col-span-7">
-            <p className="text-lg leading-relaxed text-cream/80">
-              Butterfly Built is a carpentry company based in Dover Heights, Sydney. Founded by
-              master carpenter Jon, we deliver bespoke joinery, custom kitchens, hardwood
-              decking, built-in wardrobes and renovation carpentry to homes across the Eastern
-              Suburbs and greater Sydney. Every project is designed with the homeowner, built
-              in our workshop, and finished by hand.
+
+          <h1 className="display-xl mt-10 sm:mt-16 reveal">
+            Butterfly<br />
+            Built<span className="text-timber-300">.</span>
+          </h1>
+
+          <div className="mt-12 grid gap-8 sm:mt-16 md:grid-cols-12 md:gap-12">
+            <p className="md:col-span-5 text-lg leading-relaxed text-cream/75 max-w-prose2">
+              Master carpenters working out of a Dover Heights workshop.
+              Bespoke joinery, hardwood decking, structural formwork and
+              renovation carpentry across Sydney&apos;s Eastern Suburbs.
             </p>
-            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
+            <div className="md:col-span-7 md:justify-self-end md:self-end">
+              <Link href="/contact" className="btn-arrow">
+                Get a quote
+              </Link>
+              <p className="mt-3 text-[11px] uppercase tracking-wider2 text-cream/50">
+                Or call <a href={`tel:${siteConfig.phoneTel}`} className="text-cream hover:text-timber-300">{siteConfig.phone}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20 sm:mt-28">
+          <TrustStrip />
+        </div>
+      </section>
+
+      {/* ====================================================== */}
+      {/* HERO IMAGE: full-bleed editorial strip with corner       */}
+      {/* caption, not a sidebar accent to the type.               */}
+      {/* ====================================================== */}
+      <section className="relative mt-24 sm:mt-32">
+        <div className="container-wide">
+          <div className="spec-label mb-6">
+            <span className="spec-code">02 / Field</span>
+            <span className="spec-rule" />
+          </div>
+        </div>
+        <figure className="relative w-full overflow-hidden bg-charcoal-soft">
+          <img
+            src="/images/hero/hero-home.jpg"
+            alt="Curved timber arched framing on a Sydney carpentry project by Butterfly Built"
+            className="block h-[60vh] w-full object-cover sm:h-[80vh]"
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-transparent px-5 pb-6 pt-16 sm:px-10 sm:pb-10">
+            <div className="container-wide !px-0 flex flex-wrap items-end justify-between gap-4">
+              <p className="font-serif text-xl text-cream sm:text-2xl">
+                Curved timber vaulting, in progress.
+              </p>
+              <p className="text-[11px] uppercase tracking-wider2 text-cream/60">
+                Project No. 024 · 12/06/23
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+      </section>
+
+      {/* ====================================================== */}
+      {/* SERVICES: editorial index, not a 6-card grid.           */}
+      {/* ====================================================== */}
+      <section className="mt-24 sm:mt-32">
+        <div className="container-wide">
+          <div className="spec-label mb-8">
+            <span className="spec-code">03 / Services</span>
+            <span className="spec-rule" />
+          </div>
+          <div className="grid gap-10 md:grid-cols-12 md:gap-16">
+            <Heading level={2} className="display-lg md:col-span-7">
+              What we build.
+            </Heading>
+            <div className="md:col-span-5 md:pt-6">
+              <p className="text-cream/70 leading-relaxed">
+                Eighteen carpentry disciplines under one roof. From the
+                structural formwork that holds a slab to the hand-finished
+                joinery that defines a room.
+              </p>
+              <Link
+                href="/services"
+                className="btn-ghost mt-6"
+              >
+                All services <span aria-hidden>→</span>
+              </Link>
+            </div>
+          </div>
+
+          <ol className="mt-12 sm:mt-16" aria-label="Services">
+            {services.slice(0, 10).map((s, i) => (
+              <li key={s.slug}>
+                <Link href={`/services/${s.slug}`} className="index-row">
+                  <span className="index-num">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="index-title">{s.name}</span>
+                  <span className="index-tail">
+                    See <span aria-hidden>→</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ====================================================== */}
+      {/* ABOUT / Facts — specification-style numbers block       */}
+      {/* ====================================================== */}
+      <section className="mt-24 sm:mt-32 bg-charcoal-soft py-20 sm:py-28">
+        <div className="container-wide">
+          <div className="spec-label mb-10">
+            <span className="spec-code">04 / Studio</span>
+            <span className="spec-rule" />
+          </div>
+          <div className="grid gap-16 md:grid-cols-12 md:gap-20">
+            <div className="md:col-span-7">
+              <Heading level={2} className="display-lg">
+                Hand crafted from a Dover Heights workshop.
+              </Heading>
+              <p className="mt-8 max-w-prose2 text-lg leading-relaxed text-cream/75">
+                Butterfly Built is a carpentry company based in Dover Heights,
+                Sydney. Founded by master carpenter Jon, we deliver bespoke
+                joinery, custom kitchens, hardwood decking, built-in wardrobes
+                and renovation carpentry to homes across the Eastern Suburbs
+                and greater Sydney. Every project is designed with the
+                homeowner, built in our workshop, and finished by hand.
+              </p>
+              <Link href="/about" className="btn-ghost mt-10">
+                Read our story <span aria-hidden>→</span>
+              </Link>
+            </div>
+
+            <dl className="md:col-span-5 grid grid-cols-2 gap-x-8 gap-y-10 self-center">
               <div>
-                <dt className="eyebrow">Founded</dt>
-                <dd className="mt-1 font-serif text-2xl">{siteConfig.founded}</dd>
+                <dd className="fact-value">{siteConfig.founded}</dd>
+                <dt className="fact-label">Founded</dt>
               </div>
               <div>
-                <dt className="eyebrow">Based</dt>
-                <dd className="mt-1 font-serif text-2xl">Dover Heights</dd>
+                <dd className="fact-value">
+                  {PRIMARY_SUBURB_SLUGS.length}+
+                </dd>
+                <dt className="fact-label">Suburbs served</dt>
               </div>
               <div>
-                <dt className="eyebrow">Service Area</dt>
-                <dd className="mt-1 font-serif text-2xl">All of Sydney</dd>
+                <dd className="fact-value">{services.length}</dd>
+                <dt className="fact-label">Carpentry services</dt>
               </div>
               <div>
-                <dt className="eyebrow">Reviews</dt>
-                <dd className="mt-1 font-serif text-2xl">5.0 ★</dd>
+                <dd className="fact-value">5.0<span className="text-timber-300">★</span></dd>
+                <dt className="fact-label">Reviews</dt>
               </div>
             </dl>
-            <Link href="/about" className="btn-ghost mt-8">
-              Read our story <span aria-hidden>→</span>
-            </Link>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Services grid */}
-      <Section className="bg-charcoal-soft" id="services">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <Eyebrow>What we build</Eyebrow>
-            <Heading level={2} className="mt-3">
-              Carpentry services across Sydney.
+      {/* ====================================================== */}
+      {/* AREAS: numbered editorial index by suburb                */}
+      {/* ====================================================== */}
+      <section className="mt-24 sm:mt-32">
+        <div className="container-wide">
+          <div className="spec-label mb-8">
+            <span className="spec-code">05 / Areas</span>
+            <span className="spec-rule" />
+          </div>
+          <div className="grid gap-10 md:grid-cols-12 md:gap-16">
+            <Heading level={2} className="display-lg md:col-span-7">
+              Local, across the Eastern Suburbs.
             </Heading>
+            <p className="md:col-span-5 md:pt-6 text-cream/70 leading-relaxed">
+              Nine suburbs within 15 minutes of the workshop. Each page has
+              its own history, housing stock and street knowledge baked in.
+            </p>
           </div>
-          <Link href="/services" className="btn-ghost hidden sm:inline-flex">
-            All services →
-          </Link>
-        </div>
-        <div className="mt-10">
-          <ServicesGrid limit={6} />
-        </div>
-        <div className="mt-8 sm:hidden">
-          <Link href="/services" className="btn-outline">
-            All services
-          </Link>
-        </div>
-      </Section>
 
-      {/* Recent work — flowing photo gallery */}
-      <section id="projects" className="py-16 sm:py-24">
-        <div className="container-prose">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <Eyebrow>Recent work</Eyebrow>
-              <Heading level={2} className="mt-3">
-                Selected Sydney projects.
-              </Heading>
-            </div>
-            <Link href="/projects" className="btn-ghost hidden sm:inline-flex">
-              View all →
-            </Link>
-          </div>
+          <ol className="mt-12 sm:mt-16" aria-label="Areas we serve">
+            {featuredSuburbs.map((s, i) => (
+              <li key={s.slug}>
+                <Link href={`/areas/${s.slug}`} className="index-row">
+                  <span className="index-num">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="index-title">{s.name}</span>
+                  <span className="index-tail">
+                    {s.postcode} <span aria-hidden>→</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ol>
         </div>
-        <div className="mt-10 sm:mt-14">
+      </section>
+
+      {/* ====================================================== */}
+      {/* GALLERY — flowing marquee                                */}
+      {/* ====================================================== */}
+      <section className="mt-24 sm:mt-32">
+        <div className="container-wide">
+          <div className="spec-label mb-8">
+            <span className="spec-code">06 / Recent work</span>
+            <span className="spec-rule" />
+          </div>
+          <Heading level={2} className="display-lg">
+            From the workshop.
+          </Heading>
+        </div>
+        <div className="mt-14 sm:mt-16">
           <PhotoMarquee speed={90} />
         </div>
       </section>
 
-      {/* Areas */}
-      <Section className="bg-charcoal-soft" id="areas">
-        <Eyebrow>Areas we serve</Eyebrow>
-        <Heading level={2} className="mt-3">
-          Local carpenters across the Eastern Suburbs.
-        </Heading>
-        <p className="mt-4 max-w-prose2 text-cream/80">
-          Based in Dover Heights, we work daily across Bondi, Bondi Beach, Bondi Junction,
-          Tamarama, Bronte, Vaucluse, Rose Bay, Double Bay and Watsons Bay — and across the
-          rest of Sydney on bigger projects.
-        </p>
-        <div className="mt-10">
-          <AreasGrid />
+      {/* ====================================================== */}
+      {/* PROCESS                                                  */}
+      {/* ====================================================== */}
+      <Section className="mt-24 bg-charcoal-soft">
+        <div className="spec-label mb-8">
+          <span className="spec-code">07 / Process</span>
+          <span className="spec-rule" />
         </div>
-      </Section>
-
-      {/* Why us */}
-      <Section id="why">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Eyebrow>Why Butterfly Built</Eyebrow>
-            <Heading level={2} className="mt-3">
-              Carpentry done with care.
-            </Heading>
-          </div>
-          <ul className="md:col-span-7 grid gap-6 sm:grid-cols-2">
-            {[
-              ["Master craftsmanship", "Decades of combined experience, hand-finished detail on every job."],
-              ["Local Eastern Suburbs", "Dover Heights workshop, on-site quickly across Bondi and surrounds."],
-              ["Premium timbers", "Australian hardwoods, European oaks, architectural veneers."],
-              ["Fixed-price quotes", "Detailed scope and pricing — no surprises, no hidden costs."],
-              ["Trade-coordinated", "We manage tilers, plumbers, electricians and stonemasons."],
-              ["Licensed & insured", "Fully licensed NSW carpentry with public liability cover."],
-            ].map(([title, body]) => (
-              <li key={title}>
-                <h3 className="font-serif text-xl">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-cream/60">{body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
-
-      {/* Process */}
-      <Section className="bg-charcoal-soft" id="process">
-        <Eyebrow>How we work</Eyebrow>
-        <Heading level={2} className="mt-3 mb-10">
+        <Heading level={2} className="display-lg mb-12">
           From first call to final handover.
         </Heading>
         <ProcessSection />
       </Section>
 
-      {/* Testimonials */}
-      <Section id="reviews">
-        <Eyebrow>Testimonials</Eyebrow>
-        <Heading level={2} className="mt-3 mb-10">
+      {/* ====================================================== */}
+      {/* REVIEWS                                                  */}
+      {/* ====================================================== */}
+      <Section>
+        <div className="spec-label mb-8">
+          <span className="spec-code">08 / Reviews</span>
+          <span className="spec-rule" />
+        </div>
+        <Heading level={2} className="display-lg mb-12">
           What Sydney homeowners say.
         </Heading>
         <Testimonials />
       </Section>
 
-      {/* Quick facts — LLM-friendly */}
-      <Section className="bg-black text-cream" id="quick-facts">
-        <Eyebrow>
-          <span className="text-cream/70">Quick Facts</span>
-        </Eyebrow>
-        <Heading level={2} className="mt-3 text-cream">
-          Butterfly Built at a glance.
-        </Heading>
-        <dl className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ["Business", "Butterfly Built — premium carpentry company"],
-            ["Founded", `${siteConfig.founded}`],
-            ["HQ / Workshop", "Dover Heights, Sydney NSW 2030"],
-            ["Service Area", "Sydney, with focus on the Eastern Suburbs"],
-            ["Phone", siteConfig.phone],
-            ["Email", siteConfig.email],
-            ["Instagram", siteConfig.instagramHandle],
-            ["Hours", siteConfig.hours],
-          ].map(([k, v]) => (
-            <div key={k}>
-              <dt className="text-xs uppercase tracking-wider2 text-cream/60">{k}</dt>
-              <dd className="mt-2 font-serif text-lg text-cream">{v}</dd>
-            </div>
-          ))}
-        </dl>
-      </Section>
-
-      {/* FAQs */}
-      <Section id="faq">
-        <Eyebrow>FAQs</Eyebrow>
-        <Heading level={2} className="mt-3 mb-10">
-          Frequently asked questions.
+      {/* ====================================================== */}
+      {/* FAQ                                                      */}
+      {/* ====================================================== */}
+      <Section className="bg-charcoal-soft">
+        <div className="spec-label mb-8">
+          <span className="spec-code">09 / FAQ</span>
+          <span className="spec-rule" />
+        </div>
+        <Heading level={2} className="display-lg mb-12">
+          Frequently asked.
         </Heading>
         <FAQ faqs={homepageFaqs} />
       </Section>
 
-      {/* Enquiry */}
-      <Section className="bg-charcoal-soft" id="enquire">
+      {/* ====================================================== */}
+      {/* QUICK FACTS (LLM-friendly)                               */}
+      {/* ====================================================== */}
+      <section className="mt-24 sm:mt-32 bg-black py-20 sm:py-28 text-cream">
+        <div className="container-wide">
+          <div className="spec-label mb-10">
+            <span className="spec-code">10 / Studio Facts</span>
+            <span className="spec-rule" />
+          </div>
+          <Heading level={2} className="display-lg mb-12">
+            Butterfly Built at a glance.
+          </Heading>
+          <dl className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {(
+              [
+                ["Workshop", "Dover Heights, Sydney NSW 2030"],
+                ["Service Area", "Sydney · Eastern Suburbs"],
+                ["Phone", siteConfig.phone],
+                ["Email", siteConfig.email],
+                ["Instagram", siteConfig.instagramHandle],
+                ["Founded", String(siteConfig.founded)],
+                ["Hours", siteConfig.hours],
+                ["ABN", siteConfig.abn],
+              ] as [string, string][]
+            ).map(([k, v]) => (
+              <div key={k}>
+                <dt className="text-[10px] uppercase tracking-wider2 text-cream/50">
+                  {k}
+                </dt>
+                <dd className="mt-2 font-serif text-lg text-cream leading-snug">
+                  {v}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* ====================================================== */}
+      {/* ENQUIRE                                                  */}
+      {/* ====================================================== */}
+      <Section>
+        <div className="spec-label mb-8">
+          <span className="spec-code">11 / Enquire</span>
+          <span className="spec-rule" />
+        </div>
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Eyebrow>Get a quote</Eyebrow>
-            <Heading level={2} id="enquiry-heading" className="mt-3">
+            <Heading level={2} className="display-lg">
               Tell us about your project.
             </Heading>
-            <p className="mt-4 text-cream/80">
-              We'll get back to you within one business day with next steps. For urgent jobs,
-              call <a className="link-underline" href={`tel:${siteConfig.phoneTel}`}>{siteConfig.phone}</a>.
+            <p className="mt-6 text-cream/75">
+              We respond within one business day. For urgent jobs call{" "}
+              <a className="link-underline text-cream" href={`tel:${siteConfig.phoneTel}`}>
+                {siteConfig.phone}
+              </a>
+              .
             </p>
           </div>
           <div className="md:col-span-7">
